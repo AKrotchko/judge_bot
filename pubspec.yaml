@@ -1,0 +1,22 @@
+name: judge_bot
+version: 1.0.0
+description: Discord Bot for fun
+#homepage: https://github.com/AKrotchko/
+#repository: https://github.com/AKrotchko/
+#documentation: https://github.com/AKrotchko/
+#issue_tracker: https://github.com/AKrotchko/
+publish_to: none
+
+environment:
+  sdk: '>=2.16.2 <3.0.0'
+
+dependencies:
+  nyxx: ^3.4.1
+  nyxx_commander: ^3.0.0
+  nyxx_interactions: ^4.1.0
+  petitparser: ^5.0.0
+  time_ago_provider: ^4.1.2
+
+dev_dependencies:
+  lints: ^1.0.1
+  test: ^1.16.0
