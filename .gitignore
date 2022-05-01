@@ -11,8 +11,23 @@ pubspec.lock
 # If you don't generate documentation locally you can remove this line.
 doc/api/
 
+### IntelliJ ###
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+
+# Sensitive or high-churn files:
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+
 # dotenv environment variables file
-.env*
+*.env
 
 # Avoid committing generated Javascript files:
 *.dart.js
