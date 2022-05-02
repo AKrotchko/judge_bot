@@ -11,10 +11,12 @@ environment:
   sdk: '>=2.16.2 <3.0.0'
 
 dependencies:
-  nyxx: ^3.4.1
+  http: ^0.13.4
+  nyxx: ^3.4.2
   nyxx_commander: ^3.0.0
-  nyxx_interactions: ^4.1.0
+  nyxx_interactions: ^4.2.0
   petitparser: ^5.0.0
+  string_similarity: ^2.0.0
   time_ago_provider: ^4.1.2
 
 dev_dependencies:

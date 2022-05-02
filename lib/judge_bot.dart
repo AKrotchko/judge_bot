@@ -9,6 +9,10 @@ export 'src/commands/legacy/reply_legacy.dart';
 
 /// Slash commands
 export 'src/commands/slash/info_slash.dart';
+export 'src/commands/slash/price_check_slash.dart';
+
+/// Api data
+export 'src/api/ninja_items.dart';
 
 /// Config stuff
 export 'src/modules/settings/settings.dart' show botToken, prefixHandler;
