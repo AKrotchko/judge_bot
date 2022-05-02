@@ -13,9 +13,10 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
       var matches =
           searchTerm.bestMatch(ninjaItems.map((e) => e.name).toList());
 
-      final embed = EmbedBuilder()
+      var embed = EmbedBuilder()
         ..color = DiscordColor.azure
         ..title = ninjaItems[matches.bestMatchIndex].name
+        ..url = 'https://www.poewiki.net/wiki/${(ninjaItems[matches.bestMatchIndex].name).replaceAll(' ', '_')}'
         ..thumbnailUrl = ninjaItems[matches.bestMatchIndex].icon
         ..addField(name: 'Price:', content: 'Loading...');
 
@@ -50,6 +51,33 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
 
             embed.replaceField(name: 'Price:', content: 'Chaos Equivalent: $price');
             break;
+          }
+          case 'DivinationCard': {
+            DivCard divCard = ninjaDivCards.firstWhere((element) =>
+                element.name == ninjaItems[matches.bestMatchIndex].name,
+                orElse: () => DivCard(
+                name: 'Unknown',
+                  stackSize: 0,
+                  artFilename: '',
+                  flavourText: '',
+                  chaosValue: 0,
+                  exaltedValue: 0,
+                  listingCount: 0
+                ));
+
+            embed = EmbedBuilder()
+              ..addFooter((footer) {
+                footer.text = divCard.flavourText;
+              })
+              ..color = DiscordColor.azure
+              ..title = ninjaItems[matches.bestMatchIndex].name
+              ..url = 'https://www.poewiki.net/wiki/${(ninjaItems[matches.bestMatchIndex].name).replaceAll(' ', '_')}'
+              ..thumbnailUrl = ninjaItems[matches.bestMatchIndex].icon
+              ..imageUrl = 'https://web.poecdn.com/image/divination-card/${divCard.artFilename}.png'
+              ..addField(name: 'Stack Size:', content: divCard.stackSize.toString())
+            ..addField(name: 'Chaos Value:', content: '${divCard.chaosValue}', inline: true)
+            ..addField(name: 'Exalted Value:', content: '${divCard.exaltedValue}', inline: true)
+            ..addField(name: 'Total Listed:', content: '${divCard.listingCount}', inline: true);
           }
         }
       } else {

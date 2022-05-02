@@ -72,7 +72,24 @@ Future<bool> fetchNinjaItems(String itemType) async {
             data['lines'].forEach((fragment) {
               ninjaFragments.add(CurrencyItem(
                 name: fragment['currencyTypeName'],
-                price: double.parse(fragment['chaosEquivalent'].toString()),
+                price: double.tryParse(fragment['chaosEquivalent'].toString()) ?? 0.0,
+              ));
+            });
+            return true;
+          }
+        case 'DivinationCard':
+          {
+            ninjaDivCards = [];
+
+            data['lines'].forEach((divCard) {
+              ninjaDivCards.add(DivCard(
+                  name: divCard['name'],
+                  stackSize: int.tryParse(divCard['stackSize'].toString()) ?? 0,
+                  artFilename: divCard['artFilename'],
+                  flavourText: divCard['flavourText'],
+                  chaosValue: double.tryParse(divCard['chaosValue'].toString()) ?? 0.0,
+                  exaltedValue: double.tryParse(divCard['exaltedValue'].toString()) ?? 0.0,
+                  listingCount: int.tryParse(divCard['listingCount'].toString()) ?? 0
               ));
             });
             return true;
@@ -100,6 +117,11 @@ bool cacheExpired(itemType) {
     case 'Fragment':
       if (DateTime.now().difference(ninjaCurrenciesLastUpdated).inMinutes >
           60) {
+        return true;
+      }
+      return false;
+    case 'DivinationCard':
+      if (DateTime.now().difference(ninjaDivCardsLastUpdated).inMinutes > 60) {
         return true;
       }
       return false;

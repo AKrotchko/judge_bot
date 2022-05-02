@@ -4,11 +4,10 @@
  - Price Check (Partially working, WIP)
 
 #### Supported Tradable Types:
-(CODE CLEANUP IN PROGRESS NO BOOLI)
 General:
 [x] Currency
 [x] Fragment
-[ ] Divination Cards
+[x] Divination Cards
 [ ] Artifacts
 [ ] Prophecies (RIP lol)
 [ ] Oils
