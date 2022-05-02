@@ -133,6 +133,21 @@ Future<bool> fetchNinjaItems(String itemType) async {
             ninjaOilsLastUpdated = DateTime.now();
             return true;
           }
+        case 'Incubator':
+          {
+            ninjaIncubators = [];
+
+            data['lines'].forEach((artifact) {
+              ninjaIncubators.add(GenericItem(
+                  name: artifact['name'],
+                  chaosValue: artifact['chaosValue'],
+                  exaltedValue: artifact['exaltedValue'],
+                  listingCount: artifact['listingCount']));
+            });
+
+            ninjaIncubatorsLastUpdated = DateTime.now();
+            return true;
+          }
         default:
           return false;
       }
@@ -170,6 +185,11 @@ bool cacheExpired(itemType) {
       return false;
     case 'Oil':
       if (DateTime.now().difference(ninjaOilsLastUpdated).inMinutes > 60) {
+        return true;
+      }
+      return false;
+    case 'Incubator':
+      if (DateTime.now().difference(ninjaIncubatorsLastUpdated).inMinutes > 60) {
         return true;
       }
       return false;

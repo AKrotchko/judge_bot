@@ -28,3 +28,7 @@ List<GenericItem> ninjaArtifacts = [];
 /// List of all oils, and the time that we last fetched them
 DateTime ninjaOilsLastUpdated = DateTime(1970);
 List<GenericItem> ninjaOils = [];
+
+/// List of all incubators, and the time that we last fetched them
+DateTime ninjaIncubatorsLastUpdated = DateTime(1970);
+List<GenericItem> ninjaIncubators = [];

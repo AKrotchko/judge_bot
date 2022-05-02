@@ -25,8 +25,8 @@ General:
  - [x] Divination Cards
  - [x] Artifacts
  - [ ] Prophecies (RIP lol)
- - [ ] Oils
- - [ ] Incubators
+ - [x] Oils
+ - [x] Incubators
 
 Equipment & Gems
  - [ ] Unique Weapons

@@ -148,6 +148,30 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                   inline: true);
               break;
             }
+          case 'Incubator':
+            {
+              GenericItem incubator = ninjaIncubators.firstWhere(
+                  (element) =>
+                      element.name == ninjaItems[matches.bestMatchIndex].name,
+                  orElse: () => GenericItem(
+                      name: 'Unknown',
+                      chaosValue: 0,
+                      exaltedValue: 0,
+                      listingCount: 0));
+
+              embed.addField(
+                  name: 'Total Listed:',
+                  content: '${incubator.listingCount}');
+              embed.addField(
+                  name: 'Chaos Value:',
+                  content: '${incubator.chaosValue}',
+                  inline: true);
+              embed.addField(
+                  name: 'Exalted Value:',
+                  content: '${incubator.exaltedValue}',
+                  inline: true);
+              break;
+            }
         }
       } else {
         embed.replaceField(
