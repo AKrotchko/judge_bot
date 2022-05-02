@@ -31,3 +31,16 @@ class DivCard {
       required this.exaltedValue,
       required this.listingCount});
 }
+
+class Artifact {
+  final String name;
+  final double? chaosValue;
+  final double? exaltedValue;
+  final int? listingCount;
+
+  Artifact(
+      {required this.name,
+      required this.chaosValue,
+      required this.exaltedValue,
+      required this.listingCount});
+}

@@ -14,9 +14,13 @@ DateTime ninjaCurrencyLastUpdated = DateTime(1970);
 List<CurrencyItem> ninjaCurrency = [];
 
 /// List of all fragment items, and the time that we last fetched them
-DateTime ninjaCurrenciesLastUpdated = DateTime(1970);
+DateTime ninjaFragmentsLastUpdated = DateTime(1970);
 List<CurrencyItem> ninjaFragments = [];
 
 /// List of all div cards, and the time that we last fetched them
 DateTime ninjaDivCardsLastUpdated = DateTime(1970);
 List<DivCard> ninjaDivCards = [];
+
+/// List of all artifacts, and the time that we last fetched them
+DateTime ninjaArtifactsLastUpdated = DateTime(1970);
+List<Artifact> ninjaArtifacts = [];

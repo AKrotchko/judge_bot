@@ -72,9 +72,13 @@ Future<bool> fetchNinjaItems(String itemType) async {
             data['lines'].forEach((fragment) {
               ninjaFragments.add(CurrencyItem(
                 name: fragment['currencyTypeName'],
-                price: double.tryParse(fragment['chaosEquivalent'].toString()) ?? 0.0,
+                price:
+                    double.tryParse(fragment['chaosEquivalent'].toString()) ??
+                        0.0,
               ));
             });
+
+            ninjaFragmentsLastUpdated = DateTime.now();
             return true;
           }
         case 'DivinationCard':
@@ -87,11 +91,31 @@ Future<bool> fetchNinjaItems(String itemType) async {
                   stackSize: int.tryParse(divCard['stackSize'].toString()) ?? 0,
                   artFilename: divCard['artFilename'],
                   flavourText: divCard['flavourText'],
-                  chaosValue: double.tryParse(divCard['chaosValue'].toString()) ?? 0.0,
-                  exaltedValue: double.tryParse(divCard['exaltedValue'].toString()) ?? 0.0,
-                  listingCount: int.tryParse(divCard['listingCount'].toString()) ?? 0
-              ));
+                  chaosValue:
+                      double.tryParse(divCard['chaosValue'].toString()) ?? 0.0,
+                  exaltedValue:
+                      double.tryParse(divCard['exaltedValue'].toString()) ??
+                          0.0,
+                  listingCount:
+                      int.tryParse(divCard['listingCount'].toString()) ?? 0));
             });
+
+            ninjaDivCardsLastUpdated = DateTime.now();
+            return true;
+          }
+        case 'Artifact':
+          {
+            ninjaArtifacts = [];
+
+            data['lines'].forEach((artifact) {
+              ninjaArtifacts.add(Artifact(
+                  name: artifact['name'],
+                  chaosValue: artifact['chaosValue'],
+                  exaltedValue: artifact['exaltedValue'],
+                  listingCount: artifact['listingCount']));
+            });
+
+            ninjaArtifactsLastUpdated = DateTime.now();
             return true;
           }
         default:
@@ -115,13 +139,17 @@ bool cacheExpired(itemType) {
       }
       return false;
     case 'Fragment':
-      if (DateTime.now().difference(ninjaCurrenciesLastUpdated).inMinutes >
-          60) {
+      if (DateTime.now().difference(ninjaFragmentsLastUpdated).inMinutes > 60) {
         return true;
       }
       return false;
     case 'DivinationCard':
       if (DateTime.now().difference(ninjaDivCardsLastUpdated).inMinutes > 60) {
+        return true;
+      }
+      return false;
+    case 'Artifact':
+      if (DateTime.now().difference(ninjaArtifactsLastUpdated).inMinutes > 60) {
         return true;
       }
       return false;

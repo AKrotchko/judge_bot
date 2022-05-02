@@ -23,7 +23,7 @@ General:
  - [x] Currency
  - [x] Fragment
  - [x] Divination Cards
- - [ ] Artifacts
+ - [x] Artifacts
  - [ ] Prophecies (RIP lol)
  - [ ] Oils
  - [ ] Incubators
