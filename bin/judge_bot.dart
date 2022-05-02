@@ -13,14 +13,17 @@ List<int> guildList = [
   240635484517302285 // The hangout
 ];
 
-int permissionsInt = 2112;
+int permissionsInt = 405941644353;
 String joinUrl =
     'https://discordapp.com/api/oauth2/authorize?client_id=${jb.clientId}&scope=bot&permissions=$permissionsInt';
 
 void main(List<String> arguments) async {
   print('Starting Judge Bot...');
   print('Add Judge Bot to your server: $joinUrl');
-  print('what?');
+
+  /// Fetches data from poe.ninja on every item (Find a way to cache this)
+  jb.loadNinjaData();
+
 
   botInstance = NyxxFactory.createNyxxWebsocket(
       jb.botToken, GatewayIntents.allUnprivileged,
@@ -62,6 +65,10 @@ void main(List<String> arguments) async {
   IInteractions.create(WebsocketInteractionBackend(botInstance))
     ..registerSlashCommand(SlashCommandBuilder('ping', 'Shows bots latency', [])
       ..registerHandler(jb.pingSlashHandler))
+    ..registerSlashCommand(SlashCommandBuilder('pc', 'Price check an item on poe.ninja',[
+      CommandOptionBuilder(CommandOptionType.string, 'name', 'Name of the item to check', required: true),
+    ])
+      ..registerHandler(jb.priceCheckSlashHandler))
     ..syncOnReady(
         syncRule: ManualCommandSync(sync: jb.getSyncCommandsOrOverride(true)));
   // ..events.onSlashCommand.listen((event) => jb.slashCommandsTotalUsageMetric.labels([event.interaction.name]).inc());
