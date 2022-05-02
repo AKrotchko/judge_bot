@@ -261,6 +261,111 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     inline: true);
                 break;
               }
+            case 'UniqueAccessory':
+              {
+                UniqueItem uniqueAccessory = ninjaUniqueAccessories.firstWhere(
+                        (element) =>
+                    element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () =>
+                        UniqueItem(
+                          name: 'Unknown',
+                          chaosValue: 0,
+                          exaltedValue: 0,
+                          listingCount: 0,
+                          itemType: 'Unknown',
+                          baseType: 'Unknown',
+                          flavourText: 'Unknown',
+                        ));
+
+                embed.title = '${uniqueAccessory.name} - ${uniqueAccessory.itemType}';
+                embed.addFooter((footer) {
+                  footer.text = uniqueAccessory.flavourText;
+                });
+                embed.description = uniqueAccessory.baseType;
+
+                embed.addField(
+                    name: 'Total Listed:',
+                    content: '${uniqueAccessory.listingCount}');
+                embed.addField(
+                    name: 'Chaos Value:',
+                    content: '${uniqueAccessory.chaosValue}',
+                    inline: true);
+                embed.addField(
+                    name: 'Exalted Value:',
+                    content: '${uniqueAccessory.exaltedValue}',
+                    inline: true);
+                break;
+              }
+            case 'UniqueFlask':
+              {
+                UniqueItem uniqueFlask = ninjaUniqueFlasks.firstWhere(
+                        (element) =>
+                    element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () =>
+                        UniqueItem(
+                          name: 'Unknown',
+                          chaosValue: 0,
+                          exaltedValue: 0,
+                          listingCount: 0,
+                          itemType: 'Unknown',
+                          baseType: 'Unknown',
+                          flavourText: 'Unknown',
+                        ));
+
+                embed.title = '${uniqueFlask.name} - ${uniqueFlask.itemType}';
+                embed.addFooter((footer) {
+                  footer.text = uniqueFlask.flavourText;
+                });
+                embed.description = uniqueFlask.baseType;
+
+                embed.addField(
+                    name: 'Total Listed:',
+                    content: '${uniqueFlask.listingCount}');
+                embed.addField(
+                    name: 'Chaos Value:',
+                    content: '${uniqueFlask.chaosValue}',
+                    inline: true);
+                embed.addField(
+                    name: 'Exalted Value:',
+                    content: '${uniqueFlask.exaltedValue}',
+                    inline: true);
+                break;
+              }
+            case 'UniqueJewel':
+              {
+                UniqueItem uniqueJewel = ninjaUniqueJewels.firstWhere(
+                        (element) =>
+                    element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () =>
+                        UniqueItem(
+                          name: 'Unknown',
+                          chaosValue: 0,
+                          exaltedValue: 0,
+                          listingCount: 0,
+                          itemType: 'Unknown',
+                          baseType: 'Unknown',
+                          flavourText: 'Unknown',
+                        ));
+
+                embed.title = '${uniqueJewel.name} - ${uniqueJewel.itemType}';
+                embed.addFooter((footer) {
+                  footer.text = uniqueJewel.flavourText;
+                });
+                embed.description = uniqueJewel.baseType;
+
+                embed.addField(
+                    name: 'Total Listed:',
+                    content: '${uniqueJewel.listingCount}');
+                embed.addField(
+                    name: 'Chaos Value:',
+                    content: '${uniqueJewel.chaosValue}',
+                    inline: true);
+                embed.addField(
+                    name: 'Exalted Value:',
+                    content: '${uniqueJewel.exaltedValue}',
+                    inline: true);
+                break;
+              }
           }
         } else {
           embed.replaceField(
@@ -277,6 +382,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
           MessageBuilder.content('My database is empty... Let Andy know.'));
     }
   } catch (e) {
+    /// Catches any erroneous errors, preventing the bot from crashing.
     print('An error occurred when trying to price check: $e');
     await event.respond(MessageBuilder.content('Something went wrong... $e'));
   }
@@ -288,8 +394,6 @@ String getPoeNinjaItemLink(
 
   String itemNameUrlSafe = itemName.replaceAll(' ', '%20');
   itemNameUrlSafe = itemNameUrlSafe.replaceAll('\'', '%27');
-
-  print(itemNameUrlSafe);
 
   switch (itemType) {
     case 'Currency':

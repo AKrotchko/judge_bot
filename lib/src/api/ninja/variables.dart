@@ -41,3 +41,14 @@ List<UniqueItem> ninjaUniqueWeapons = [];
 DateTime ninjaUniqueArmourLastUpdated = DateTime(1970);
 List<UniqueItem> ninjaUniqueArmour = [];
 
+/// List of all unique jewellery, and the time that we last fetched them
+DateTime ninjaUniqueAccessoriesLastUpdated = DateTime(1970);
+List<UniqueItem> ninjaUniqueAccessories = [];
+
+/// List of all unique flasks, and the time that we last fetched them
+DateTime ninjaUniqueFlasksLastUpdated = DateTime(1970);
+List<UniqueItem> ninjaUniqueFlasks = [];
+
+/// List of all unique jewels, and the time that we last fetched them
+DateTime ninjaUniqueJewelsLastUpdated = DateTime(1970);
+List<UniqueItem> ninjaUniqueJewels = [];

@@ -184,6 +184,60 @@ Future<bool> fetchNinjaItems(String itemType) async {
             ninjaUniqueArmourLastUpdated = DateTime.now();
             return true;
           }
+        case 'UniqueAccessory':
+          {
+            ninjaUniqueAccessories = [];
+
+            data['lines'].forEach((uniqueAccessory) {
+              ninjaUniqueAccessories.add(UniqueItem(
+                  name: uniqueAccessory['name'],
+                  chaosValue: uniqueAccessory['chaosValue'],
+                  exaltedValue: uniqueAccessory['exaltedValue'],
+                  listingCount: uniqueAccessory['listingCount'],
+                  baseType: uniqueAccessory['baseType'],
+                  flavourText: uniqueAccessory['flavourText'],
+                  itemType: uniqueAccessory['itemType']));
+            });
+
+            ninjaUniqueAccessoriesLastUpdated = DateTime.now();
+            return true;
+          }
+        case 'UniqueFlask':
+          {
+            ninjaUniqueFlasks = [];
+
+            data['lines'].forEach((uniqueFlask) {
+              ninjaUniqueFlasks.add(UniqueItem(
+                  name: uniqueFlask['name'],
+                  chaosValue: uniqueFlask['chaosValue'],
+                  exaltedValue: uniqueFlask['exaltedValue'],
+                  listingCount: uniqueFlask['listingCount'],
+                  baseType: uniqueFlask['baseType'],
+                  flavourText: uniqueFlask['flavourText'],
+                  itemType: 'Flask'));
+            });
+
+            ninjaUniqueFlasksLastUpdated = DateTime.now();
+            return true;
+          }
+        case 'UniqueJewel':
+          {
+            ninjaUniqueJewels = [];
+
+            data['lines'].forEach((uniqueJewel) {
+              ninjaUniqueJewels.add(UniqueItem(
+                  name: uniqueJewel['name'],
+                  chaosValue: uniqueJewel['chaosValue'],
+                  exaltedValue: uniqueJewel['exaltedValue'],
+                  listingCount: uniqueJewel['listingCount'],
+                  baseType: uniqueJewel['baseType'],
+                  flavourText: uniqueJewel['flavourText'],
+                  itemType: 'Jewel'));
+            });
+
+            ninjaUniqueJewelsLastUpdated = DateTime.now();
+            return true;
+          }
         default:
           return false;
       }
@@ -238,6 +292,24 @@ bool cacheExpired(itemType) {
       return false;
     case 'UniqueArmour':
       if (DateTime.now().difference(ninjaUniqueArmourLastUpdated).inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'UniqueAccessory':
+      if (DateTime.now().difference(ninjaUniqueAccessoriesLastUpdated).inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'UniqueFlask':
+      if (DateTime.now().difference(ninjaUniqueFlasksLastUpdated).inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'UniqueJewel':
+      if (DateTime.now().difference(ninjaUniqueJewelsLastUpdated).inMinutes >
           60) {
         return true;
       }
