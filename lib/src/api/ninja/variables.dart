@@ -36,3 +36,8 @@ List<GenericItem> ninjaIncubators = [];
 /// List of all unique weapons, and the time that we last fetched them
 DateTime ninjaUniqueWeaponsLastUpdated = DateTime(1970);
 List<UniqueItem> ninjaUniqueWeapons = [];
+
+/// List of all unique armour, and the time that we last fetched them
+DateTime ninjaUniqueArmourLastUpdated = DateTime(1970);
+List<UniqueItem> ninjaUniqueArmour = [];
+

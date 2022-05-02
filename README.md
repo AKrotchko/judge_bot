@@ -29,7 +29,7 @@ General:
  - [x] Incubators
 
 Equipment & Gems
- - [ ] Unique Weapons
+ - [x] Unique Weapons
  - [ ] Unique Armours
  - [ ] Unique Accessories
  - [ ] Unique Flasks
