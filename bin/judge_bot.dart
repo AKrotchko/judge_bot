@@ -13,7 +13,7 @@ List<int> guildList = [
   240635484517302285 // The hangout
 ];
 
-int permissionsInt = 2112;
+int permissionsInt = 405941644353;
 String joinUrl =
     'https://discordapp.com/api/oauth2/authorize?client_id=${jb.clientId}&scope=bot&permissions=$permissionsInt';
 

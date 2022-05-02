@@ -14,9 +14,41 @@ DateTime ninjaCurrencyLastUpdated = DateTime(1970);
 List<CurrencyItem> ninjaCurrency = [];
 
 /// List of all fragment items, and the time that we last fetched them
-DateTime ninjaCurrenciesLastUpdated = DateTime(1970);
+DateTime ninjaFragmentsLastUpdated = DateTime(1970);
 List<CurrencyItem> ninjaFragments = [];
 
 /// List of all div cards, and the time that we last fetched them
 DateTime ninjaDivCardsLastUpdated = DateTime(1970);
 List<DivCard> ninjaDivCards = [];
+
+/// List of all artifacts, and the time that we last fetched them
+DateTime ninjaArtifactsLastUpdated = DateTime(1970);
+List<GenericItem> ninjaArtifacts = [];
+
+/// List of all oils, and the time that we last fetched them
+DateTime ninjaOilsLastUpdated = DateTime(1970);
+List<GenericItem> ninjaOils = [];
+
+/// List of all incubators, and the time that we last fetched them
+DateTime ninjaIncubatorsLastUpdated = DateTime(1970);
+List<GenericItem> ninjaIncubators = [];
+
+/// List of all unique weapons, and the time that we last fetched them
+DateTime ninjaUniqueWeaponsLastUpdated = DateTime(1970);
+List<UniqueItem> ninjaUniqueWeapons = [];
+
+/// List of all unique armour, and the time that we last fetched them
+DateTime ninjaUniqueArmourLastUpdated = DateTime(1970);
+List<UniqueItem> ninjaUniqueArmour = [];
+
+/// List of all unique jewellery, and the time that we last fetched them
+DateTime ninjaUniqueAccessoriesLastUpdated = DateTime(1970);
+List<UniqueItem> ninjaUniqueAccessories = [];
+
+/// List of all unique flasks, and the time that we last fetched them
+DateTime ninjaUniqueFlasksLastUpdated = DateTime(1970);
+List<UniqueItem> ninjaUniqueFlasks = [];
+
+/// List of all unique jewels, and the time that we last fetched them
+DateTime ninjaUniqueJewelsLastUpdated = DateTime(1970);
+List<UniqueItem> ninjaUniqueJewels = [];
