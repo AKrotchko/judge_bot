@@ -48,30 +48,37 @@ Future<bool> fetchNinjaItems(String itemType) async {
       var response = await http.get(url);
       var data = json.decode(response.body);
 
-      /// Used for currency and fragments
-      if (itemType == 'Currency') {
-        ninjaCurrency = [];
+      /// refill the cache with new data based on the item type
+      switch (itemType) {
+        case 'Currency':
+          {
+            ninjaCurrency = [];
 
-        data['lines'].forEach((currency) {
-          ninjaCurrency.add(CurrencyItem(
-            name: currency['currencyTypeName'],
-            price: double.parse(currency['chaosEquivalent'].toString()),
-          ));
-        });
+            data['lines'].forEach((currency) {
+              ninjaCurrency.add(CurrencyItem(
+                name: currency['currencyTypeName'],
+                price: double.parse(currency['chaosEquivalent'].toString()),
+              ));
+            });
 
-        /// Update the last updated time
-        ninjaCurrencyLastUpdated = DateTime.now();
-      } else if (itemType == 'Fragment') {
-        ninjaFragments = [];
+            /// Update the last updated time
+            ninjaCurrencyLastUpdated = DateTime.now();
+            return true;
+          }
+        case 'Fragment':
+          {
+            ninjaFragments = [];
 
-        data['lines'].forEach((fragment) {
-          ninjaFragments.add(CurrencyItem(
-            name: fragment['currencyTypeName'],
-            price: double.parse(fragment['chaosEquivalent'].toString()),
-          ));
-        });
-      } else {
-        return false;
+            data['lines'].forEach((fragment) {
+              ninjaFragments.add(CurrencyItem(
+                name: fragment['currencyTypeName'],
+                price: double.parse(fragment['chaosEquivalent'].toString()),
+              ));
+            });
+            return true;
+          }
+        default:
+          return false;
       }
     }
 
@@ -91,7 +98,8 @@ bool cacheExpired(itemType) {
       }
       return false;
     case 'Fragment':
-      if (DateTime.now().difference(ninjaCurrenciesLastUpdated).inMinutes > 60) {
+      if (DateTime.now().difference(ninjaCurrenciesLastUpdated).inMinutes >
+          60) {
         return true;
       }
       return false;

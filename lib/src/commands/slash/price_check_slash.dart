@@ -24,28 +24,33 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
       /// Checks for cached items, or fetches if they're old
       bool success = await fetchNinjaItems(ninjaItems[matches.bestMatchIndex].type);
 
+      /// If the item is supported, and either cached or fetched
       if (success) {
-        /// Does a replacement for currency
-        if (ninjaItems[matches.bestMatchIndex].type == 'Currency') {
-          String price = ninjaCurrency
-              .firstWhere(
-                  (element) =>
-              element.name == ninjaItems[matches.bestMatchIndex].name,
-              orElse: () => CurrencyItem(name: 'Unknown', price: 0))
-              .price
-              .toString();
+        switch (ninjaItems[matches.bestMatchIndex].type) {
+          case 'Currency': {
+            String price = ninjaCurrency
+                .firstWhere(
+                    (element) =>
+                element.name == ninjaItems[matches.bestMatchIndex].name,
+                orElse: () => CurrencyItem(name: 'Unknown', price: 0))
+                .price
+                .toString();
 
-          embed.replaceField(name: 'Price:', content: 'Chaos Equivalent: $price');
-        } else if (ninjaItems[matches.bestMatchIndex].type == 'Fragment') {
-          String price = ninjaFragments
-              .firstWhere(
-              (element) =>
-                  element.name == ninjaItems[matches.bestMatchIndex].name,
-            orElse: () => CurrencyItem(name: 'Unknown', price: 0))
-              .price
-              .toString();
+            embed.replaceField(name: 'Price:', content: 'Chaos Equivalent: $price');
+            break;
+          }
+          case 'Fragment': {
+            String price = ninjaFragments
+                .firstWhere(
+                    (element) =>
+                element.name == ninjaItems[matches.bestMatchIndex].name,
+                orElse: () => CurrencyItem(name: 'Unknown', price: 0))
+                .price
+                .toString();
 
-          embed.replaceField(name: 'Price:', content: 'Chaos Equivalent: $price');
+            embed.replaceField(name: 'Price:', content: 'Chaos Equivalent: $price');
+            break;
+          }
         }
       } else {
         embed.replaceField(name: 'Price:', content: 'Failed to load (Or unsupported)');
