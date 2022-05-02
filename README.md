@@ -8,6 +8,10 @@ Judge Bot utilizes the [nyxx][1] API library for Discord, making creating comman
 ## How To Run
 Coming soon
 
+## Want to add Judge Bot to your server?
+
+Contact Andy#1590 on Discord if you would like to use my hosted bot. You're welcome to clone it and run it yourself, of course.
+
 ## Bot Functions
 
 
