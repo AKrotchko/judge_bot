@@ -30,10 +30,10 @@ General:
 
 Equipment & Gems
  - [x] Unique Weapons
- - [ ] Unique Armours
- - [ ] Unique Accessories
- - [ ] Unique Flasks
- - [ ] Unique Jewels
+ - [x] Unique Armours
+ - [x] Unique Accessories
+ - [x] Unique Flasks
+ - [x] Unique Jewels
  - [ ] Skill Gems
  - [ ] Cluster Jewels
 
