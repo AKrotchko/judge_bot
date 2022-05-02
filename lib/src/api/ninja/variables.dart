@@ -23,4 +23,8 @@ List<DivCard> ninjaDivCards = [];
 
 /// List of all artifacts, and the time that we last fetched them
 DateTime ninjaArtifactsLastUpdated = DateTime(1970);
-List<Artifact> ninjaArtifacts = [];
+List<GenericItem> ninjaArtifacts = [];
+
+/// List of all oils, and the time that we last fetched them
+DateTime ninjaOilsLastUpdated = DateTime(1970);
+List<GenericItem> ninjaOils = [];

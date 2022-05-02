@@ -108,7 +108,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
             ninjaArtifacts = [];
 
             data['lines'].forEach((artifact) {
-              ninjaArtifacts.add(Artifact(
+              ninjaArtifacts.add(GenericItem(
                   name: artifact['name'],
                   chaosValue: artifact['chaosValue'],
                   exaltedValue: artifact['exaltedValue'],
@@ -116,6 +116,21 @@ Future<bool> fetchNinjaItems(String itemType) async {
             });
 
             ninjaArtifactsLastUpdated = DateTime.now();
+            return true;
+          }
+        case 'Oil':
+          {
+            ninjaOils = [];
+
+            data['lines'].forEach((artifact) {
+              ninjaOils.add(GenericItem(
+                  name: artifact['name'],
+                  chaosValue: artifact['chaosValue'],
+                  exaltedValue: artifact['exaltedValue'],
+                  listingCount: artifact['listingCount']));
+            });
+
+            ninjaOilsLastUpdated = DateTime.now();
             return true;
           }
         default:
@@ -150,6 +165,11 @@ bool cacheExpired(itemType) {
       return false;
     case 'Artifact':
       if (DateTime.now().difference(ninjaArtifactsLastUpdated).inMinutes > 60) {
+        return true;
+      }
+      return false;
+    case 'Oil':
+      if (DateTime.now().difference(ninjaOilsLastUpdated).inMinutes > 60) {
         return true;
       }
       return false;

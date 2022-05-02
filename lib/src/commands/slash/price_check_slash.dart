@@ -102,10 +102,10 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
             }
           case 'Artifact':
             {
-              Artifact artifact = ninjaArtifacts.firstWhere(
+              GenericItem artifact = ninjaArtifacts.firstWhere(
                   (element) =>
                       element.name == ninjaItems[matches.bestMatchIndex].name,
-                  orElse: () => Artifact(
+                  orElse: () => GenericItem(
                       name: 'Unknown',
                       chaosValue: 0,
                       exaltedValue: 0,
@@ -123,6 +123,30 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${artifact.exaltedValue}',
                     inline: true);
                 break;
+            }
+          case 'Oil':
+            {
+              GenericItem oil = ninjaOils.firstWhere(
+                      (element) =>
+                  element.name == ninjaItems[matches.bestMatchIndex].name,
+                  orElse: () => GenericItem(
+                      name: 'Unknown',
+                      chaosValue: 0,
+                      exaltedValue: 0,
+                      listingCount: 0));
+
+              embed.addField(
+                  name: 'Total Listed:',
+                  content: '${oil.listingCount}');
+              embed.addField(
+                  name: 'Chaos Value:',
+                  content: '${oil.chaosValue}',
+                  inline: true);
+              embed.addField(
+                  name: 'Exalted Value:',
+                  content: '${oil.exaltedValue}',
+                  inline: true);
+              break;
             }
         }
       } else {

@@ -32,13 +32,13 @@ class DivCard {
       required this.listingCount});
 }
 
-class Artifact {
+class GenericItem {
   final String name;
   final double? chaosValue;
   final double? exaltedValue;
   final int? listingCount;
 
-  Artifact(
+  GenericItem(
       {required this.name,
       required this.chaosValue,
       required this.exaltedValue,
