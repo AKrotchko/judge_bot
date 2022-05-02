@@ -44,3 +44,22 @@ class GenericItem {
       required this.exaltedValue,
       required this.listingCount});
 }
+
+class UniqueItem {
+  final String name;
+  final String baseType;
+  final String flavourText;
+  final String itemType;
+  final double? chaosValue;
+  final double? exaltedValue;
+  final int? listingCount;
+
+  UniqueItem(
+      {required this.name,
+      required this.baseType,
+      required this.flavourText,
+      required this.itemType,
+      required this.chaosValue,
+      required this.exaltedValue,
+      required this.listingCount});
+}

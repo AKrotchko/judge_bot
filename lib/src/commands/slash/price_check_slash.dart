@@ -112,23 +112,22 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                       listingCount: 0));
 
               embed.addField(
-                  name: 'Total Listed:',
-                  content: '${artifact.listingCount}');
+                  name: 'Total Listed:', content: '${artifact.listingCount}');
               embed.addField(
                   name: 'Chaos Value:',
                   content: '${artifact.chaosValue}',
                   inline: true);
-                embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${artifact.exaltedValue}',
-                    inline: true);
-                break;
+              embed.addField(
+                  name: 'Exalted Value:',
+                  content: '${artifact.exaltedValue}',
+                  inline: true);
+              break;
             }
           case 'Oil':
             {
               GenericItem oil = ninjaOils.firstWhere(
-                      (element) =>
-                  element.name == ninjaItems[matches.bestMatchIndex].name,
+                  (element) =>
+                      element.name == ninjaItems[matches.bestMatchIndex].name,
                   orElse: () => GenericItem(
                       name: 'Unknown',
                       chaosValue: 0,
@@ -136,8 +135,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                       listingCount: 0));
 
               embed.addField(
-                  name: 'Total Listed:',
-                  content: '${oil.listingCount}');
+                  name: 'Total Listed:', content: '${oil.listingCount}');
               embed.addField(
                   name: 'Chaos Value:',
                   content: '${oil.chaosValue}',
@@ -160,8 +158,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                       listingCount: 0));
 
               embed.addField(
-                  name: 'Total Listed:',
-                  content: '${incubator.listingCount}');
+                  name: 'Total Listed:', content: '${incubator.listingCount}');
               embed.addField(
                   name: 'Chaos Value:',
                   content: '${incubator.chaosValue}',
@@ -169,6 +166,40 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
               embed.addField(
                   name: 'Exalted Value:',
                   content: '${incubator.exaltedValue}',
+                  inline: true);
+              break;
+            }
+          case 'UniqueWeapon':
+            {
+              UniqueItem uniqueWeapon = ninjaUniqueWeapons.firstWhere(
+                  (element) =>
+                      element.name == ninjaItems[matches.bestMatchIndex].name,
+                  orElse: () => UniqueItem(
+                        name: 'Unknown',
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0,
+                        itemType: 'Unknown',
+                        baseType: 'Unknown',
+                        flavourText: 'Unknown',
+                      ));
+
+              embed.title = '${uniqueWeapon.name} - ${uniqueWeapon.itemType}';
+              embed.addFooter((footer) {
+                footer.text = uniqueWeapon.flavourText;
+              });
+              embed.description = uniqueWeapon.baseType;
+
+              embed.addField(
+                  name: 'Total Listed:',
+                  content: '${uniqueWeapon.listingCount}');
+              embed.addField(
+                  name: 'Chaos Value:',
+                  content: '${uniqueWeapon.chaosValue}',
+                  inline: true);
+              embed.addField(
+                  name: 'Exalted Value:',
+                  content: '${uniqueWeapon.exaltedValue}',
                   inline: true);
               break;
             }

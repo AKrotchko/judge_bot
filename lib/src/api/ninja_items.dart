@@ -148,6 +148,24 @@ Future<bool> fetchNinjaItems(String itemType) async {
             ninjaIncubatorsLastUpdated = DateTime.now();
             return true;
           }
+        case 'UniqueWeapon':
+          {
+            ninjaUniqueWeapons = [];
+
+            data['lines'].forEach((uniqueWeapon) {
+              ninjaUniqueWeapons.add(UniqueItem(
+                  name: uniqueWeapon['name'],
+                  chaosValue: uniqueWeapon['chaosValue'],
+                  exaltedValue: uniqueWeapon['exaltedValue'],
+                  listingCount: uniqueWeapon['listingCount'],
+                  baseType: uniqueWeapon['baseType'],
+                  flavourText: uniqueWeapon['flavourText'],
+                  itemType: uniqueWeapon['itemType']));
+            });
+
+            ninjaUniqueWeaponsLastUpdated = DateTime.now();
+            return true;
+          }
         default:
           return false;
       }
@@ -189,7 +207,14 @@ bool cacheExpired(itemType) {
       }
       return false;
     case 'Incubator':
-      if (DateTime.now().difference(ninjaIncubatorsLastUpdated).inMinutes > 60) {
+      if (DateTime.now().difference(ninjaIncubatorsLastUpdated).inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'UniqueWeapon':
+      if (DateTime.now().difference(ninjaUniqueWeaponsLastUpdated).inMinutes >
+          60) {
         return true;
       }
       return false;
