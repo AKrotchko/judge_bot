@@ -63,3 +63,25 @@ class UniqueItem {
       required this.exaltedValue,
       required this.listingCount});
 }
+
+class SkillGem {
+  final String name;
+  final String icon;
+  final int? levelRequired;
+  final int? gemLevel;
+  final int? gemQuality;
+  final double? chaosValue;
+  final double? exaltedValue;
+  final int? listingCount;
+
+  SkillGem({
+    required this.name,
+    required this.icon,
+    required this.levelRequired,
+    required this.gemLevel,
+    required this.gemQuality,
+    required this.chaosValue,
+    required this.exaltedValue,
+    required this.listingCount,
+  });
+}

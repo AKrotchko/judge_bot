@@ -366,6 +366,54 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     inline: true);
                 break;
               }
+            case 'SkillGem':
+              {
+                SkillGem skillGem = ninjaSkillGems.firstWhere(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                  orElse: () =>
+                      SkillGem(
+                        name: 'Unknown',
+                        icon: 'Unknown',
+                        levelRequired: 0,
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        gemLevel: 0,
+                        gemQuality: 0,
+                        listingCount: 0,
+                      ));
+
+                embed.title = skillGem.name;
+                embed.addField(
+                  name: 'Total Listed:',
+                  content: '${skillGem.listingCount}',
+                );
+                embed.addField(
+                  name: 'Level Required:',
+                  content: '${skillGem.levelRequired}',
+                  inline: true,
+                );
+                embed.addField(
+                  name: 'Gem Level:',
+                  content: '${skillGem.gemLevel}',
+                  inline: true,
+                );
+                embed.addField(
+                  name: 'Gem Quality:',
+                  content: '${skillGem.gemQuality}',
+                  inline: true,
+                );
+                embed.addField(
+                  name: 'Chaos Value:',
+                  content: '${skillGem.chaosValue}',
+                  inline: true,
+                );
+                embed.addField(
+                  name: 'Exalted Value:',
+                  content: '${skillGem.exaltedValue}',
+                  inline: true,
+                );
+              }
           }
         } else {
           embed.replaceField(

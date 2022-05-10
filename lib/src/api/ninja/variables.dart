@@ -52,3 +52,7 @@ List<UniqueItem> ninjaUniqueFlasks = [];
 /// List of all unique jewels, and the time that we last fetched them
 DateTime ninjaUniqueJewelsLastUpdated = DateTime(1970);
 List<UniqueItem> ninjaUniqueJewels = [];
+
+/// List of all skill gems, and the time that we last fetched them
+DateTime ninjaSkillGemsLastUpdated = DateTime(1970);
+List<SkillGem> ninjaSkillGems = [];

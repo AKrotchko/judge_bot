@@ -238,6 +238,26 @@ Future<bool> fetchNinjaItems(String itemType) async {
             ninjaUniqueJewelsLastUpdated = DateTime.now();
             return true;
           }
+        case 'SkillGem':
+          {
+            ninjaSkillGems = [];
+
+            data['lines'].forEach((skillGem) {
+              ninjaSkillGems.add(SkillGem(
+                name: skillGem['name'],
+                icon: skillGem['icon'],
+                levelRequired: skillGem['levelRequired'],
+                gemLevel: skillGem['gemLevel'],
+                gemQuality: skillGem['gemQuality'],
+                chaosValue: skillGem['chaosValue'],
+                exaltedValue: skillGem['exaltedValue'],
+                listingCount: skillGem['listingCount'],
+              ));
+            });
+
+            ninjaSkillGemsLastUpdated = DateTime.now();
+            return true;
+          }
         default:
           return false;
       }
@@ -297,7 +317,9 @@ bool cacheExpired(itemType) {
       }
       return false;
     case 'UniqueAccessory':
-      if (DateTime.now().difference(ninjaUniqueAccessoriesLastUpdated).inMinutes >
+      if (DateTime.now()
+              .difference(ninjaUniqueAccessoriesLastUpdated)
+              .inMinutes >
           60) {
         return true;
       }
@@ -311,6 +333,11 @@ bool cacheExpired(itemType) {
     case 'UniqueJewel':
       if (DateTime.now().difference(ninjaUniqueJewelsLastUpdated).inMinutes >
           60) {
+        return true;
+      }
+      return false;
+    case 'SkillGem':
+      if (DateTime.now().difference(ninjaSkillGemsLastUpdated).inMinutes > 60) {
         return true;
       }
       return false;

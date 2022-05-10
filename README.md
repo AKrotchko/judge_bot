@@ -34,7 +34,7 @@ Equipment & Gems
  - [x] Unique Accessories
  - [x] Unique Flasks
  - [x] Unique Jewels
- - [ ] Skill Gems
+ - [x] Skill Gems
  - [ ] Cluster Jewels
 
 Atlas
