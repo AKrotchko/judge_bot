@@ -85,3 +85,25 @@ class SkillGem {
     required this.listingCount,
   });
 }
+
+class ClusterJewel {
+  final String name;
+  final String icon;
+  final int? levelRequired;
+  final String baseType;
+  final String variant;
+  final double? chaosValue;
+  final double? exaltedValue;
+  final int? listingCount;
+
+  ClusterJewel({
+    required this.name,
+    required this.icon,
+    required this.levelRequired,
+    required this.baseType,
+    required this.variant,
+    required this.chaosValue,
+    required this.exaltedValue,
+    required this.listingCount,
+  });
+}
