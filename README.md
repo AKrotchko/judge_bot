@@ -18,8 +18,8 @@ Contact Andy#1590 on Discord if you would like to use my hosted bot. You're welc
 ### poe.ninja API
  - Price Check (Partially working, WIP)
 
-#### Current Progress: (13/28 - 46.4% complete)
-General: (7/7 - 100%)
+#### Current Progress: (13/27 - 48.1% complete)
+General: (6/6 - 100%)
  - [x] Currency
  - [x] Fragment
  - [x] Divination Cards
@@ -37,7 +37,7 @@ Equipment & Gems: (7/7 - 100%)
  - [x] Skill Gems
  - [x] Cluster Jewels
 
-Atlas: (0/8 - 0%)
+Atlas: (0/7 - 0%)
  - [ ] Maps
  - [ ] Blighted Maps
  - [ ] Blight-ravaged Maps
@@ -46,7 +46,7 @@ Atlas: (0/8 - 0%)
  - [ ] Delirium Orbs
  - [ ] Invitations
  - [ ] Scarabs
- - [ ] Watchstones
+ - ~~Watchstones~~
 
 Crafting: (0/7 - 0%)
  - [ ] Base Types
