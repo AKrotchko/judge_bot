@@ -422,6 +422,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                 embed.title =
                     '${clusterJewel.variant.replaceFirst('passives', 'passive')} ${clusterJewel.baseType}';
                 embed.description = clusterJewel.name;
+                /// Removes the poewiki header from generic cluster jewels
+                embed.author = null;
 
                 embed.addField(
                   name: 'Total Listed:',
