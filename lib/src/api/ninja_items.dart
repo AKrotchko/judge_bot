@@ -283,8 +283,9 @@ Future<bool> fetchNinjaItems(String itemType) async {
             ninjaMaps = [];
 
             data['lines'].forEach((map) {
-              ninjaMaps.add(GenericItem(
+              ninjaMaps.add(MapItem(
                 name: map['name'],
+                mapTier: map['mapTier'],
                 listingCount: map['listingCount'],
                 chaosValue: map['chaosValue'],
                 exaltedValue: map['exaltedValue'],

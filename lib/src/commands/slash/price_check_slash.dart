@@ -449,18 +449,23 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
               }
             case 'Map':
               {
-                GenericItem map = ninjaMaps.firstWhere(
-                        (element) =>
-                    element.name == ninjaItems[matches.bestMatchIndex].name,
-                    orElse: () => GenericItem(
+                MapItem map = ninjaMaps.firstWhere(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => MapItem(
                         name: 'Unknown',
+                        mapTier: 0,
                         chaosValue: 0,
                         exaltedValue: 0,
                         listingCount: 0));
 
                 embed.addField(
-                    name: 'Total Listed:',
-                    content: '${map.listingCount}');
+                    name: 'Total Listed:', content: '${map.listingCount}');
+                embed.addField(
+                  name: 'Map Tier:',
+                  content: '${map.mapTier}',
+                  inline: true,
+                );
                 embed.addField(
                     name: 'Chaos Value:',
                     content: '${map.chaosValue}',

@@ -107,3 +107,18 @@ class ClusterJewel {
     required this.listingCount,
   });
 }
+
+class MapItem {
+  final String name;
+  final int? mapTier;
+  final double? chaosValue;
+  final double? exaltedValue;
+  final int? listingCount;
+
+  MapItem(
+      {required this.name,
+        required this.mapTier,
+        required this.chaosValue,
+        required this.exaltedValue,
+        required this.listingCount});
+}
