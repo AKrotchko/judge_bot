@@ -312,6 +312,23 @@ Future<bool> fetchNinjaItems(String itemType) async {
             ninjaBlightedMapsLastUpdated = DateTime.now();
             return true;
           }
+        case 'BlightRavagedMap':
+          {
+            ninjaBlightRavagedMaps = [];
+
+            data['lines'].forEach((blightedMap) {
+              ninjaBlightRavagedMaps.add(MapItem(
+                name: blightedMap['name'],
+                mapTier: blightedMap['mapTier'],
+                listingCount: blightedMap['listingCount'],
+                chaosValue: blightedMap['chaosValue'],
+                exaltedValue: blightedMap['exaltedValue'],
+              ));
+            });
+
+            ninjaBlightRavagedMapsLastUpdated = DateTime.now();
+            return true;
+          }
         default:
           return false;
       }
@@ -408,6 +425,14 @@ bool cacheExpired(itemType) {
       return false;
     case 'BlightedMap':
       if (DateTime.now().difference(ninjaBlightedMapsLastUpdated).inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'BlightRavagedMap':
+      if (DateTime.now()
+              .difference(ninjaBlightRavagedMapsLastUpdated)
+              .inMinutes >
           60) {
         return true;
       }
