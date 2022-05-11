@@ -295,6 +295,23 @@ Future<bool> fetchNinjaItems(String itemType) async {
             ninjaMapsLastUpdated = DateTime.now();
             return true;
           }
+        case 'BlightedMap':
+          {
+            ninjaBlightedMaps = [];
+
+            data['lines'].forEach((blightedMap) {
+              ninjaBlightedMaps.add(MapItem(
+                name: blightedMap['name'],
+                mapTier: blightedMap['mapTier'],
+                listingCount: blightedMap['listingCount'],
+                chaosValue: blightedMap['chaosValue'],
+                exaltedValue: blightedMap['exaltedValue'],
+              ));
+            });
+
+            ninjaBlightedMapsLastUpdated = DateTime.now();
+            return true;
+          }
         default:
           return false;
       }
@@ -386,6 +403,12 @@ bool cacheExpired(itemType) {
       return false;
     case 'Map':
       if (DateTime.now().difference(ninjaMapsLastUpdated).inMinutes > 60) {
+        return true;
+      }
+      return false;
+    case 'BlightedMap':
+      if (DateTime.now().difference(ninjaBlightedMapsLastUpdated).inMinutes >
+          60) {
         return true;
       }
       return false;

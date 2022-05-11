@@ -64,3 +64,7 @@ List<ClusterJewel> ninjaClusterJewels = [];
 /// List of all maps, and the time that we last fetched them
 DateTime ninjaMapsLastUpdated = DateTime(1970);
 List<MapItem> ninjaMaps = [];
+
+/// List of all blighted maps, and the time that we last fetched them
+DateTime ninjaBlightedMapsLastUpdated = DateTime(1970);
+List<MapItem> ninjaBlightedMaps = [];

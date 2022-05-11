@@ -476,6 +476,36 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     inline: true);
                 break;
               }
+            case 'BlightedMap':
+              {
+                MapItem blightedMap = ninjaBlightedMaps.firstWhere(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => MapItem(
+                        name: 'Unknown',
+                        mapTier: 0,
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
+
+                embed.addField(
+                    name: 'Total Listed:',
+                    content: '${blightedMap.listingCount}');
+                embed.addField(
+                  name: 'Map Tier:',
+                  content: '${blightedMap.mapTier}',
+                  inline: true,
+                );
+                embed.addField(
+                    name: 'Chaos Value:',
+                    content: '${blightedMap.chaosValue}',
+                    inline: true);
+                embed.addField(
+                    name: 'Exalted Value:',
+                    content: '${blightedMap.exaltedValue}',
+                    inline: true);
+                break;
+              }
           }
         } else {
           embed.replaceField(
