@@ -364,6 +364,23 @@ Future<bool> fetchNinjaItems(String itemType) async {
             ninjaDeliriumOrbsLastUpdated = DateTime.now();
             return true;
           }
+        case 'Invitation':
+          {
+            ninjaInvitations = [];
+
+            data['lines'].forEach((invitation) {
+              ninjaInvitations.add(InvitationItem(
+                name: invitation['name'],
+                flavourText: invitation['flavourText'],
+                chaosValue: invitation['chaosValue'],
+                exaltedValue: invitation['exaltedValue'],
+                listingCount: invitation['listingCount'],
+              ));
+            });
+
+            ninjaInvitationsLastUpdated = DateTime.now();
+            return true;
+          }
         default:
           return false;
       }
@@ -480,6 +497,12 @@ bool cacheExpired(itemType) {
       return false;
     case 'DeliriumOrb':
       if (DateTime.now().difference(ninjaDeliriumOrbsLastUpdated).inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'Invitation':
+      if (DateTime.now().difference(ninjaInvitationsLastUpdated).inMinutes >
           60) {
         return true;
       }

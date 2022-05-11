@@ -80,3 +80,7 @@ List<UniqueMapItem> ninjaUniqueMaps = [];
 /// List of all delirium orbs, and the time that we last fetched them
 DateTime ninjaDeliriumOrbsLastUpdated = DateTime(1970);
 List<GenericItem> ninjaDeliriumOrbs = [];
+
+/// List of all invitations, and the time that we last fetched them
+DateTime ninjaInvitationsLastUpdated = DateTime(1970);
+List<InvitationItem> ninjaInvitations = [];

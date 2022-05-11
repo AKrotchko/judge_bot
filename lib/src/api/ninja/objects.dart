@@ -141,3 +141,18 @@ class UniqueMapItem {
       required this.exaltedValue,
       required this.listingCount});
 }
+
+class InvitationItem {
+  final String name;
+  final String flavourText;
+  final double? chaosValue;
+  final double? exaltedValue;
+  final int? listingCount;
+
+  InvitationItem(
+      {required this.name,
+      required this.flavourText,
+      required this.chaosValue,
+      required this.exaltedValue,
+      required this.listingCount});
+}

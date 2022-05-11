@@ -603,6 +603,36 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     inline: true);
                 break;
               }
+            case 'Invitation':
+              {
+                InvitationItem invitation = ninjaInvitations.firstWhere(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => InvitationItem(
+                        name: 'Unknown',
+                        flavourText: 'Unknown',
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
+
+                embed.title = invitation.name;
+                embed.addField(
+                    name: 'Total Listed:',
+                    content: '${invitation.listingCount}');
+                embed.addField(
+                    name: 'Chaos Value:',
+                    content: '${invitation.chaosValue}',
+                    inline: true);
+                embed.addField(
+                    name: 'Exalted Value:',
+                    content: '${invitation.exaltedValue}',
+                    inline: true);
+
+                embed.addFooter((footer) {
+                  footer.text = invitation.flavourText;
+                });
+                break;
+              }
           }
         } else {
           embed.replaceField(
