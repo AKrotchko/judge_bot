@@ -72,3 +72,7 @@ List<MapItem> ninjaBlightedMaps = [];
 /// List of all blight-ravaged maps, and the time that we last fetched them
 DateTime ninjaBlightRavagedMapsLastUpdated = DateTime(1970);
 List<MapItem> ninjaBlightRavagedMaps = [];
+
+/// List of all unique maps, and the time that we last fetched them
+DateTime ninjaUniqueMapsLastUpdated = DateTime(1970);
+List<UniqueMapItem> ninjaUniqueMaps = [];

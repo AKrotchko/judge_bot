@@ -509,8 +509,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
             case 'BlightRavagedMap':
               {
                 MapItem blightedMap = ninjaBlightRavagedMaps.firstWhere(
-                        (element) =>
-                    element.name == ninjaItems[matches.bestMatchIndex].name,
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
                     orElse: () => MapItem(
                         name: 'Unknown',
                         mapTier: 0,
@@ -534,6 +534,49 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     name: 'Exalted Value:',
                     content: '${blightedMap.exaltedValue}',
                     inline: true);
+                break;
+              }
+            case 'UniqueMap':
+              {
+                UniqueMapItem uniqueMap = ninjaUniqueMaps.firstWhere(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => UniqueMapItem(
+                        name: 'Unknown',
+                        mapTier: 0,
+                        baseType: 'Unknown',
+                        flavourText: 'Unknown',
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
+
+                embed.title = uniqueMap.name;
+                embed.description = uniqueMap.baseType;
+
+                embed.addField(
+                  name: 'Total Listed:',
+                  content: '${uniqueMap.listingCount}',
+                );
+
+                embed.addField(
+                  name: 'Map Tier:',
+                  content: '${uniqueMap.mapTier}',
+                  inline: true,
+                );
+                embed.addField(
+                  name: 'Chaos Value:',
+                  content: '${uniqueMap.chaosValue}',
+                  inline: true,
+                );
+                embed.addField(
+                  name: 'Exalted Value:',
+                  content: '${uniqueMap.exaltedValue}',
+                  inline: true,
+                );
+
+                embed.addFooter((footer) {
+                  footer.text = uniqueMap.flavourText;
+                });
                 break;
               }
           }

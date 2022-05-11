@@ -117,8 +117,27 @@ class MapItem {
 
   MapItem(
       {required this.name,
-        required this.mapTier,
-        required this.chaosValue,
-        required this.exaltedValue,
-        required this.listingCount});
+      required this.mapTier,
+      required this.chaosValue,
+      required this.exaltedValue,
+      required this.listingCount});
+}
+
+class UniqueMapItem {
+  final String name;
+  final String baseType;
+  final int? mapTier;
+  final String flavourText;
+  final double? chaosValue;
+  final double? exaltedValue;
+  final int? listingCount;
+
+  UniqueMapItem(
+      {required this.name,
+      required this.baseType,
+      required this.mapTier,
+      required this.flavourText,
+      required this.chaosValue,
+      required this.exaltedValue,
+      required this.listingCount});
 }

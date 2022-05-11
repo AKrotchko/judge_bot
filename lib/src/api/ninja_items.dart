@@ -329,6 +329,25 @@ Future<bool> fetchNinjaItems(String itemType) async {
             ninjaBlightRavagedMapsLastUpdated = DateTime.now();
             return true;
           }
+        case 'UniqueMap':
+          {
+            ninjaUniqueMaps = [];
+
+            data['lines'].forEach((uniqueMap) {
+              ninjaUniqueMaps.add(UniqueMapItem(
+                name: uniqueMap['name'],
+                mapTier: uniqueMap['mapTier'],
+                baseType: uniqueMap['baseType'],
+                flavourText: uniqueMap['flavourText'],
+                chaosValue: uniqueMap['chaosValue'],
+                exaltedValue: uniqueMap['exaltedValue'],
+                listingCount: uniqueMap['listingCount'],
+              ));
+            });
+
+            ninjaUniqueMapsLastUpdated = DateTime.now();
+            return true;
+          }
         default:
           return false;
       }
@@ -433,6 +452,12 @@ bool cacheExpired(itemType) {
       if (DateTime.now()
               .difference(ninjaBlightRavagedMapsLastUpdated)
               .inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'UniqueMap':
+      if (DateTime.now().difference(ninjaUniqueMapsLastUpdated).inMinutes >
           60) {
         return true;
       }
