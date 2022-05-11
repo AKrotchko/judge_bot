@@ -278,6 +278,22 @@ Future<bool> fetchNinjaItems(String itemType) async {
             ninjaClusterJewelsLastUpdated = DateTime.now();
             return true;
           }
+        case 'Map':
+          {
+            ninjaMaps = [];
+
+            data['lines'].forEach((map) {
+              ninjaMaps.add(GenericItem(
+                name: map['name'],
+                listingCount: map['listingCount'],
+                chaosValue: map['chaosValue'],
+                exaltedValue: map['exaltedValue'],
+              ));
+            });
+
+            ninjaMapsLastUpdated = DateTime.now();
+            return true;
+          }
         default:
           return false;
       }
@@ -362,7 +378,13 @@ bool cacheExpired(itemType) {
       }
       return false;
     case 'ClusterJewel':
-      if (DateTime.now().difference(ninjaClusterJewelsLastUpdated).inMinutes > 60) {
+      if (DateTime.now().difference(ninjaClusterJewelsLastUpdated).inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'Map':
+      if (DateTime.now().difference(ninjaMapsLastUpdated).inMinutes > 60) {
         return true;
       }
       return false;

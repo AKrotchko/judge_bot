@@ -422,6 +422,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                 embed.title =
                     '${clusterJewel.variant.replaceFirst('passives', 'passive')} ${clusterJewel.baseType}';
                 embed.description = clusterJewel.name;
+
                 /// Removes the poewiki header from generic cluster jewels
                 embed.author = null;
 
@@ -444,6 +445,30 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                   content: '${clusterJewel.exaltedValue}',
                   inline: true,
                 );
+                break;
+              }
+            case 'Map':
+              {
+                GenericItem map = ninjaMaps.firstWhere(
+                        (element) =>
+                    element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => GenericItem(
+                        name: 'Unknown',
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
+
+                embed.addField(
+                    name: 'Total Listed:',
+                    content: '${map.listingCount}');
+                embed.addField(
+                    name: 'Chaos Value:',
+                    content: '${map.chaosValue}',
+                    inline: true);
+                embed.addField(
+                    name: 'Exalted Value:',
+                    content: '${map.exaltedValue}',
+                    inline: true);
                 break;
               }
           }
