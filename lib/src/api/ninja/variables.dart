@@ -83,4 +83,8 @@ List<GenericItem> ninjaDeliriumOrbs = [];
 
 /// List of all invitations, and the time that we last fetched them
 DateTime ninjaInvitationsLastUpdated = DateTime(1970);
-List<InvitationItem> ninjaInvitations = [];
+List<GenericFlavourItem> ninjaInvitations = [];
+
+/// List of all scarabs, and the time that we last fetched them
+DateTime ninjaScarabsLastUpdated = DateTime(1970);
+List<GenericFlavourItem> ninjaScarabs = [];

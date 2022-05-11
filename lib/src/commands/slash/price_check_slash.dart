@@ -605,10 +605,10 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
               }
             case 'Invitation':
               {
-                InvitationItem invitation = ninjaInvitations.firstWhere(
+                GenericFlavourItem invitation = ninjaInvitations.firstWhere(
                     (element) =>
                         element.name == ninjaItems[matches.bestMatchIndex].name,
-                    orElse: () => InvitationItem(
+                    orElse: () => GenericFlavourItem(
                         name: 'Unknown',
                         flavourText: 'Unknown',
                         chaosValue: 0,
@@ -630,6 +630,36 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
 
                 embed.addFooter((footer) {
                   footer.text = invitation.flavourText;
+                });
+                break;
+              }
+            case 'Scarab':
+              {
+                GenericFlavourItem scarab = ninjaScarabs.firstWhere(
+                        (element) =>
+                    element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => GenericFlavourItem(
+                        name: 'Unknown',
+                        flavourText: 'Unknown',
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
+
+                embed.title = scarab.name;
+                embed.addField(
+                    name: 'Total Listed:',
+                    content: '${scarab.listingCount}');
+                embed.addField(
+                    name: 'Chaos Value:',
+                    content: '${scarab.chaosValue}',
+                    inline: true);
+                embed.addField(
+                    name: 'Exalted Value:',
+                    content: '${scarab.exaltedValue}',
+                    inline: true);
+
+                embed.addFooter((footer) {
+                  footer.text = scarab.flavourText;
                 });
                 break;
               }

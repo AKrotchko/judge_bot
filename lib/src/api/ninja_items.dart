@@ -369,7 +369,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
             ninjaInvitations = [];
 
             data['lines'].forEach((invitation) {
-              ninjaInvitations.add(InvitationItem(
+              ninjaInvitations.add(GenericFlavourItem(
                 name: invitation['name'],
                 flavourText: invitation['flavourText'],
                 chaosValue: invitation['chaosValue'],
@@ -379,6 +379,23 @@ Future<bool> fetchNinjaItems(String itemType) async {
             });
 
             ninjaInvitationsLastUpdated = DateTime.now();
+            return true;
+          }
+        case 'Scarab':
+          {
+            ninjaScarabs = [];
+
+            data['lines'].forEach((scarab) {
+              ninjaScarabs.add(GenericFlavourItem(
+                name: scarab['name'],
+                flavourText: scarab['flavourText'],
+                chaosValue: scarab['chaosValue'],
+                exaltedValue: scarab['exaltedValue'],
+                listingCount: scarab['listingCount'],
+              ));
+            });
+
+            ninjaScarabsLastUpdated = DateTime.now();
             return true;
           }
         default:
@@ -504,6 +521,11 @@ bool cacheExpired(itemType) {
     case 'Invitation':
       if (DateTime.now().difference(ninjaInvitationsLastUpdated).inMinutes >
           60) {
+        return true;
+      }
+      return false;
+    case 'Scarab':
+      if (DateTime.now().difference(ninjaScarabsLastUpdated).inMinutes > 60) {
         return true;
       }
       return false;

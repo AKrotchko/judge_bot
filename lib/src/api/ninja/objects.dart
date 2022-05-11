@@ -142,14 +142,14 @@ class UniqueMapItem {
       required this.listingCount});
 }
 
-class InvitationItem {
+class GenericFlavourItem {
   final String name;
   final String flavourText;
   final double? chaosValue;
   final double? exaltedValue;
   final int? listingCount;
 
-  InvitationItem(
+  GenericFlavourItem(
       {required this.name,
       required this.flavourText,
       required this.chaosValue,
