@@ -1,4 +1,4 @@
-# judge_bot
+# Judge Bot
 
 ## What is Judge Bot?
 Judge bot is my personal project, It is designed as a Discord bot that does all sorts of useful (and useless) things. You will often find me updating this bot and filling it with commands that may be relevant to games I enjoy.
@@ -18,37 +18,37 @@ Contact Andy#1590 on Discord if you would like to use my hosted bot. You're welc
 ### poe.ninja API
  - Price Check (Partially working, WIP)
 
-#### Current Progress:
-General:
+#### Current Progress: (20/27 - 74.1% complete)
+General: (6/6 - 100%)
  - [x] Currency
  - [x] Fragment
  - [x] Divination Cards
  - [x] Artifacts
- - [ ] Prophecies (RIP lol)
+ - ~~Prophecies~~ (RIP lol)
  - [x] Oils
  - [x] Incubators
 
-Equipment & Gems
+Equipment & Gems: (7/7 - 100%)
  - [x] Unique Weapons
  - [x] Unique Armours
  - [x] Unique Accessories
  - [x] Unique Flasks
  - [x] Unique Jewels
- - [ ] Skill Gems
- - [ ] Cluster Jewels
+ - [x] Skill Gems
+ - [x] Cluster Jewels
 
-Atlas
- - [ ] Maps
- - [ ] Blighted Maps
- - [ ] Blight-ravaged Maps
- - [ ] Scourged Maps
- - [ ] Unique Maps
- - [ ] Delirium Orbs
- - [ ] Invitations
- - [ ] Scarabs
- - [ ] Watchstones
+Atlas: (7/7 - 100%)
+ - [x] Maps
+ - [x] Blighted Maps
+ - [x] Blight-ravaged Maps
+ - ~~Scourged Maps~~
+ - [x] Unique Maps
+ - [x] Delirium Orbs
+ - [x] Invitations
+ - [x] Scarabs
+ - ~~Watchstones~~
 
-Crafting
+Crafting: (0/7 - 0%)
  - [ ] Base Types
  - [ ] Fossils
  - [ ] Resonators

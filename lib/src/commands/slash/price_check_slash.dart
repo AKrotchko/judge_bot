@@ -8,21 +8,17 @@ import 'package:string_similarity/string_similarity.dart';
 Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
   try {
     if (ninjaItems.isNotEmpty) {
-      String searchTerm = event
-          .getArg('name')
-          .value
-          .toString();
+      String searchTerm = event.getArg('name').value.toString();
 
       if (searchTerm.isNotEmpty) {
         var matches =
-        searchTerm.bestMatch(ninjaItems.map((e) => e.name).toList());
+            searchTerm.bestMatch(ninjaItems.map((e) => e.name).toList());
 
         var embed = EmbedBuilder()
           ..addAuthor((author) {
             author.name = 'View on PoE Wiki';
             author.url =
-            'https://www.poewiki.net/wiki/${(ninjaItems[matches.bestMatchIndex]
-                .name).replaceAll(' ', '_')}';
+                'https://www.poewiki.net/wiki/${(ninjaItems[matches.bestMatchIndex].name).replaceAll(' ', '_')}';
           })
           ..color = DiscordColor.azure
           ..title = ninjaItems[matches.bestMatchIndex].name
@@ -35,7 +31,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
 
         /// Checks for cached items, or fetches if they're old
         bool success =
-        await fetchNinjaItems(ninjaItems[matches.bestMatchIndex].type);
+            await fetchNinjaItems(ninjaItems[matches.bestMatchIndex].type);
 
         /// If the item is supported, and either cached or fetched
         if (success) {
@@ -45,9 +41,9 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                 String price = ninjaCurrency
                     .firstWhere(
                         (element) =>
-                    element.name ==
-                        ninjaItems[matches.bestMatchIndex].name,
-                    orElse: () => CurrencyItem(name: 'Unknown', price: 0))
+                            element.name ==
+                            ninjaItems[matches.bestMatchIndex].name,
+                        orElse: () => CurrencyItem(name: 'Unknown', price: 0))
                     .price
                     .toString();
 
@@ -60,9 +56,9 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                 String price = ninjaFragments
                     .firstWhere(
                         (element) =>
-                    element.name ==
-                        ninjaItems[matches.bestMatchIndex].name,
-                    orElse: () => CurrencyItem(name: 'Unknown', price: 0))
+                            element.name ==
+                            ninjaItems[matches.bestMatchIndex].name,
+                        orElse: () => CurrencyItem(name: 'Unknown', price: 0))
                     .price
                     .toString();
 
@@ -73,24 +69,22 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
             case 'DivinationCard':
               {
                 DivCard divCard = ninjaDivCards.firstWhere(
-                        (element) =>
-                    element.name == ninjaItems[matches.bestMatchIndex].name,
-                    orElse: () =>
-                        DivCard(
-                            name: 'Unknown',
-                            stackSize: 0,
-                            artFilename: '',
-                            flavourText: '',
-                            chaosValue: 0,
-                            exaltedValue: 0,
-                            listingCount: 0));
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => DivCard(
+                        name: 'Unknown',
+                        stackSize: 0,
+                        artFilename: '',
+                        flavourText: '',
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
 
                 embed = EmbedBuilder()
                   ..addAuthor((author) {
                     author.name = 'View on PoE Wiki';
                     author.url =
-                    'https://www.poewiki.net/wiki/${(ninjaItems[matches
-                        .bestMatchIndex].name).replaceAll(' ', '_')}';
+                        'https://www.poewiki.net/wiki/${(ninjaItems[matches.bestMatchIndex].name).replaceAll(' ', '_')}';
                   })
                   ..addFooter((footer) {
                     footer.text = divCard.flavourText;
@@ -102,17 +96,19 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                       itemType: ninjaItems[matches.bestMatchIndex].type)
                   ..thumbnailUrl = ninjaItems[matches.bestMatchIndex].icon
                   ..imageUrl =
-                      'https://web.poecdn.com/image/divination-card/${divCard
-                      .artFilename}.png'
+                      'https://web.poecdn.com/image/divination-card/${divCard.artFilename}.png'
                   ..addField(
                       name: 'Stack Size:',
-                      content: divCard.stackSize.toString())..addField(
+                      content: divCard.stackSize.toString())
+                  ..addField(
                       name: 'Chaos Value:',
                       content: '${divCard.chaosValue}',
-                      inline: true)..addField(
+                      inline: true)
+                  ..addField(
                       name: 'Exalted Value:',
                       content: '${divCard.exaltedValue}',
-                      inline: true)..addField(
+                      inline: true)
+                  ..addField(
                       name: 'Total Listed:',
                       content: '${divCard.listingCount}',
                       inline: true);
@@ -121,14 +117,13 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
             case 'Artifact':
               {
                 GenericItem artifact = ninjaArtifacts.firstWhere(
-                        (element) =>
-                    element.name == ninjaItems[matches.bestMatchIndex].name,
-                    orElse: () =>
-                        GenericItem(
-                            name: 'Unknown',
-                            chaosValue: 0,
-                            exaltedValue: 0,
-                            listingCount: 0));
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => GenericItem(
+                        name: 'Unknown',
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
 
                 embed.addField(
                     name: 'Total Listed:', content: '${artifact.listingCount}');
@@ -145,14 +140,13 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
             case 'Oil':
               {
                 GenericItem oil = ninjaOils.firstWhere(
-                        (element) =>
-                    element.name == ninjaItems[matches.bestMatchIndex].name,
-                    orElse: () =>
-                        GenericItem(
-                            name: 'Unknown',
-                            chaosValue: 0,
-                            exaltedValue: 0,
-                            listingCount: 0));
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => GenericItem(
+                        name: 'Unknown',
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
 
                 embed.addField(
                     name: 'Total Listed:', content: '${oil.listingCount}');
@@ -169,14 +163,13 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
             case 'Incubator':
               {
                 GenericItem incubator = ninjaIncubators.firstWhere(
-                        (element) =>
-                    element.name == ninjaItems[matches.bestMatchIndex].name,
-                    orElse: () =>
-                        GenericItem(
-                            name: 'Unknown',
-                            chaosValue: 0,
-                            exaltedValue: 0,
-                            listingCount: 0));
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => GenericItem(
+                        name: 'Unknown',
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
 
                 embed.addField(
                     name: 'Total Listed:',
@@ -194,10 +187,9 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
             case 'UniqueWeapon':
               {
                 UniqueItem uniqueWeapon = ninjaUniqueWeapons.firstWhere(
-                        (element) =>
-                    element.name == ninjaItems[matches.bestMatchIndex].name,
-                    orElse: () =>
-                        UniqueItem(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => UniqueItem(
                           name: 'Unknown',
                           chaosValue: 0,
                           exaltedValue: 0,
@@ -229,10 +221,9 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
             case 'UniqueArmour':
               {
                 UniqueItem uniqueArmour = ninjaUniqueArmour.firstWhere(
-                        (element) =>
-                    element.name == ninjaItems[matches.bestMatchIndex].name,
-                    orElse: () =>
-                        UniqueItem(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => UniqueItem(
                           name: 'Unknown',
                           chaosValue: 0,
                           exaltedValue: 0,
@@ -264,10 +255,9 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
             case 'UniqueAccessory':
               {
                 UniqueItem uniqueAccessory = ninjaUniqueAccessories.firstWhere(
-                        (element) =>
-                    element.name == ninjaItems[matches.bestMatchIndex].name,
-                    orElse: () =>
-                        UniqueItem(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => UniqueItem(
                           name: 'Unknown',
                           chaosValue: 0,
                           exaltedValue: 0,
@@ -277,7 +267,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                           flavourText: 'Unknown',
                         ));
 
-                embed.title = '${uniqueAccessory.name} - ${uniqueAccessory.itemType}';
+                embed.title =
+                    '${uniqueAccessory.name} - ${uniqueAccessory.itemType}';
                 embed.addFooter((footer) {
                   footer.text = uniqueAccessory.flavourText;
                 });
@@ -299,10 +290,9 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
             case 'UniqueFlask':
               {
                 UniqueItem uniqueFlask = ninjaUniqueFlasks.firstWhere(
-                        (element) =>
-                    element.name == ninjaItems[matches.bestMatchIndex].name,
-                    orElse: () =>
-                        UniqueItem(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => UniqueItem(
                           name: 'Unknown',
                           chaosValue: 0,
                           exaltedValue: 0,
@@ -334,10 +324,9 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
             case 'UniqueJewel':
               {
                 UniqueItem uniqueJewel = ninjaUniqueJewels.firstWhere(
-                        (element) =>
-                    element.name == ninjaItems[matches.bestMatchIndex].name,
-                    orElse: () =>
-                        UniqueItem(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => UniqueItem(
                           name: 'Unknown',
                           chaosValue: 0,
                           exaltedValue: 0,
@@ -364,6 +353,314 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     name: 'Exalted Value:',
                     content: '${uniqueJewel.exaltedValue}',
                     inline: true);
+                break;
+              }
+            case 'SkillGem':
+              {
+                SkillGem skillGem = ninjaSkillGems.firstWhere(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => SkillGem(
+                          name: 'Unknown',
+                          icon: 'Unknown',
+                          levelRequired: 0,
+                          chaosValue: 0,
+                          exaltedValue: 0,
+                          gemLevel: 0,
+                          gemQuality: 0,
+                          listingCount: 0,
+                        ));
+
+                embed.title = skillGem.name;
+                embed.addField(
+                  name: 'Total Listed:',
+                  content: '${skillGem.listingCount}',
+                );
+                embed.addField(
+                  name: 'Level Required:',
+                  content: '${skillGem.levelRequired}',
+                  inline: true,
+                );
+                embed.addField(
+                  name: 'Gem Level:',
+                  content: '${skillGem.gemLevel}',
+                  inline: true,
+                );
+                embed.addField(
+                  name: 'Gem Quality:',
+                  content: '${skillGem.gemQuality}',
+                  inline: true,
+                );
+                embed.addField(
+                  name: 'Chaos Value:',
+                  content: '${skillGem.chaosValue}',
+                  inline: true,
+                );
+                embed.addField(
+                  name: 'Exalted Value:',
+                  content: '${skillGem.exaltedValue}',
+                  inline: true,
+                );
+                break;
+              }
+            case 'ClusterJewel':
+              {
+                ClusterJewel clusterJewel = ninjaClusterJewels.firstWhere(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => ClusterJewel(
+                          name: 'Unknown',
+                          icon: 'Unknown',
+                          levelRequired: 0,
+                          chaosValue: 0,
+                          exaltedValue: 0,
+                          listingCount: 0,
+                          baseType: 'Unknown',
+                          variant: 'Unknown',
+                        ));
+
+                embed.title =
+                    '${clusterJewel.variant.replaceFirst('passives', 'passive')} ${clusterJewel.baseType}';
+                embed.description = clusterJewel.name;
+
+                /// Removes the poewiki header from generic cluster jewels
+                embed.author = null;
+
+                embed.addField(
+                  name: 'Total Listed:',
+                  content: '${clusterJewel.listingCount}',
+                );
+                embed.addField(
+                  name: 'Level Required:',
+                  content: '${clusterJewel.levelRequired}',
+                  inline: true,
+                );
+                embed.addField(
+                  name: 'Chaos Value:',
+                  content: '${clusterJewel.chaosValue}',
+                  inline: true,
+                );
+                embed.addField(
+                  name: 'Exalted Value:',
+                  content: '${clusterJewel.exaltedValue}',
+                  inline: true,
+                );
+                break;
+              }
+            case 'Map':
+              {
+                MapItem map = ninjaMaps.firstWhere(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => MapItem(
+                        name: 'Unknown',
+                        mapTier: 0,
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
+
+                embed.addField(
+                    name: 'Total Listed:', content: '${map.listingCount}');
+                embed.addField(
+                  name: 'Map Tier:',
+                  content: '${map.mapTier}',
+                  inline: true,
+                );
+                embed.addField(
+                    name: 'Chaos Value:',
+                    content: '${map.chaosValue}',
+                    inline: true);
+                embed.addField(
+                    name: 'Exalted Value:',
+                    content: '${map.exaltedValue}',
+                    inline: true);
+                break;
+              }
+            case 'BlightedMap':
+              {
+                MapItem blightedMap = ninjaBlightedMaps.firstWhere(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => MapItem(
+                        name: 'Unknown',
+                        mapTier: 0,
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
+
+                embed.addField(
+                    name: 'Total Listed:',
+                    content: '${blightedMap.listingCount}');
+                embed.addField(
+                  name: 'Map Tier:',
+                  content: '${blightedMap.mapTier}',
+                  inline: true,
+                );
+                embed.addField(
+                    name: 'Chaos Value:',
+                    content: '${blightedMap.chaosValue}',
+                    inline: true);
+                embed.addField(
+                    name: 'Exalted Value:',
+                    content: '${blightedMap.exaltedValue}',
+                    inline: true);
+                break;
+              }
+            case 'BlightRavagedMap':
+              {
+                MapItem blightedMap = ninjaBlightRavagedMaps.firstWhere(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => MapItem(
+                        name: 'Unknown',
+                        mapTier: 0,
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
+
+                embed.addField(
+                    name: 'Total Listed:',
+                    content: '${blightedMap.listingCount}');
+                embed.addField(
+                  name: 'Map Tier:',
+                  content: '${blightedMap.mapTier}',
+                  inline: true,
+                );
+                embed.addField(
+                    name: 'Chaos Value:',
+                    content: '${blightedMap.chaosValue}',
+                    inline: true);
+                embed.addField(
+                    name: 'Exalted Value:',
+                    content: '${blightedMap.exaltedValue}',
+                    inline: true);
+                break;
+              }
+            case 'UniqueMap':
+              {
+                UniqueMapItem uniqueMap = ninjaUniqueMaps.firstWhere(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => UniqueMapItem(
+                        name: 'Unknown',
+                        mapTier: 0,
+                        baseType: 'Unknown',
+                        flavourText: 'Unknown',
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
+
+                embed.title = uniqueMap.name;
+                embed.description = uniqueMap.baseType;
+
+                embed.addField(
+                  name: 'Total Listed:',
+                  content: '${uniqueMap.listingCount}',
+                );
+
+                embed.addField(
+                  name: 'Map Tier:',
+                  content: '${uniqueMap.mapTier}',
+                  inline: true,
+                );
+                embed.addField(
+                  name: 'Chaos Value:',
+                  content: '${uniqueMap.chaosValue}',
+                  inline: true,
+                );
+                embed.addField(
+                  name: 'Exalted Value:',
+                  content: '${uniqueMap.exaltedValue}',
+                  inline: true,
+                );
+
+                embed.addFooter((footer) {
+                  footer.text = uniqueMap.flavourText;
+                });
+                break;
+              }
+            case 'DeliriumOrb':
+              {
+                GenericItem deliriumOrb = ninjaDeliriumOrbs.firstWhere(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => GenericItem(
+                        name: 'Unknown',
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
+
+                embed.addField(
+                    name: 'Total Listed:',
+                    content: '${deliriumOrb.listingCount}');
+                embed.addField(
+                    name: 'Chaos Value:',
+                    content: '${deliriumOrb.chaosValue}',
+                    inline: true);
+                embed.addField(
+                    name: 'Exalted Value:',
+                    content: '${deliriumOrb.exaltedValue}',
+                    inline: true);
+                break;
+              }
+            case 'Invitation':
+              {
+                GenericFlavourItem invitation = ninjaInvitations.firstWhere(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => GenericFlavourItem(
+                        name: 'Unknown',
+                        flavourText: 'Unknown',
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
+
+                embed.title = invitation.name;
+                embed.addField(
+                    name: 'Total Listed:',
+                    content: '${invitation.listingCount}');
+                embed.addField(
+                    name: 'Chaos Value:',
+                    content: '${invitation.chaosValue}',
+                    inline: true);
+                embed.addField(
+                    name: 'Exalted Value:',
+                    content: '${invitation.exaltedValue}',
+                    inline: true);
+
+                embed.addFooter((footer) {
+                  footer.text = invitation.flavourText;
+                });
+                break;
+              }
+            case 'Scarab':
+              {
+                GenericFlavourItem scarab = ninjaScarabs.firstWhere(
+                        (element) =>
+                    element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => GenericFlavourItem(
+                        name: 'Unknown',
+                        flavourText: 'Unknown',
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
+
+                embed.title = scarab.name;
+                embed.addField(
+                    name: 'Total Listed:',
+                    content: '${scarab.listingCount}');
+                embed.addField(
+                    name: 'Chaos Value:',
+                    content: '${scarab.chaosValue}',
+                    inline: true);
+                embed.addField(
+                    name: 'Exalted Value:',
+                    content: '${scarab.exaltedValue}',
+                    inline: true);
+
+                embed.addFooter((footer) {
+                  footer.text = scarab.flavourText;
+                });
                 break;
               }
           }

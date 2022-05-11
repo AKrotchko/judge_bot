@@ -238,6 +238,166 @@ Future<bool> fetchNinjaItems(String itemType) async {
             ninjaUniqueJewelsLastUpdated = DateTime.now();
             return true;
           }
+        case 'SkillGem':
+          {
+            ninjaSkillGems = [];
+
+            data['lines'].forEach((skillGem) {
+              ninjaSkillGems.add(SkillGem(
+                name: skillGem['name'],
+                icon: skillGem['icon'],
+                levelRequired: skillGem['levelRequired'],
+                gemLevel: skillGem['gemLevel'],
+                gemQuality: skillGem['gemQuality'],
+                chaosValue: skillGem['chaosValue'],
+                exaltedValue: skillGem['exaltedValue'],
+                listingCount: skillGem['listingCount'],
+              ));
+            });
+
+            ninjaSkillGemsLastUpdated = DateTime.now();
+            return true;
+          }
+        case 'ClusterJewel':
+          {
+            ninjaClusterJewels = [];
+
+            data['lines'].forEach((clusterJewel) {
+              ninjaClusterJewels.add(ClusterJewel(
+                name: clusterJewel['name'],
+                icon: clusterJewel['icon'],
+                levelRequired: clusterJewel['levelRequired'],
+                baseType: clusterJewel['baseType'],
+                variant: clusterJewel['variant'],
+                chaosValue: clusterJewel['chaosValue'],
+                exaltedValue: clusterJewel['exaltedValue'],
+                listingCount: clusterJewel['listingCount'],
+              ));
+            });
+
+            ninjaClusterJewelsLastUpdated = DateTime.now();
+            return true;
+          }
+        case 'Map':
+          {
+            ninjaMaps = [];
+
+            data['lines'].forEach((map) {
+              ninjaMaps.add(MapItem(
+                name: map['name'],
+                mapTier: map['mapTier'],
+                listingCount: map['listingCount'],
+                chaosValue: map['chaosValue'],
+                exaltedValue: map['exaltedValue'],
+              ));
+            });
+
+            ninjaMapsLastUpdated = DateTime.now();
+            return true;
+          }
+        case 'BlightedMap':
+          {
+            ninjaBlightedMaps = [];
+
+            data['lines'].forEach((blightedMap) {
+              ninjaBlightedMaps.add(MapItem(
+                name: blightedMap['name'],
+                mapTier: blightedMap['mapTier'],
+                listingCount: blightedMap['listingCount'],
+                chaosValue: blightedMap['chaosValue'],
+                exaltedValue: blightedMap['exaltedValue'],
+              ));
+            });
+
+            ninjaBlightedMapsLastUpdated = DateTime.now();
+            return true;
+          }
+        case 'BlightRavagedMap':
+          {
+            ninjaBlightRavagedMaps = [];
+
+            data['lines'].forEach((blightedMap) {
+              ninjaBlightRavagedMaps.add(MapItem(
+                name: blightedMap['name'],
+                mapTier: blightedMap['mapTier'],
+                listingCount: blightedMap['listingCount'],
+                chaosValue: blightedMap['chaosValue'],
+                exaltedValue: blightedMap['exaltedValue'],
+              ));
+            });
+
+            ninjaBlightRavagedMapsLastUpdated = DateTime.now();
+            return true;
+          }
+        case 'UniqueMap':
+          {
+            ninjaUniqueMaps = [];
+
+            data['lines'].forEach((uniqueMap) {
+              ninjaUniqueMaps.add(UniqueMapItem(
+                name: uniqueMap['name'],
+                mapTier: uniqueMap['mapTier'],
+                baseType: uniqueMap['baseType'],
+                flavourText: uniqueMap['flavourText'],
+                chaosValue: uniqueMap['chaosValue'],
+                exaltedValue: uniqueMap['exaltedValue'],
+                listingCount: uniqueMap['listingCount'],
+              ));
+            });
+
+            ninjaUniqueMapsLastUpdated = DateTime.now();
+            return true;
+          }
+        case 'DeliriumOrb':
+          {
+            ninjaDeliriumOrbs = [];
+
+            data['lines'].forEach((deliriumOrb) {
+              ninjaDeliriumOrbs.add(GenericItem(
+                name: deliriumOrb['name'],
+                chaosValue: deliriumOrb['chaosValue'],
+                exaltedValue: deliriumOrb['exaltedValue'],
+                listingCount: deliriumOrb['listingCount'],
+              ));
+            });
+
+            ninjaDeliriumOrbsLastUpdated = DateTime.now();
+            return true;
+          }
+        case 'Invitation':
+          {
+            ninjaInvitations = [];
+
+            data['lines'].forEach((invitation) {
+              ninjaInvitations.add(GenericFlavourItem(
+                name: invitation['name'],
+                flavourText: invitation['flavourText'],
+                chaosValue: invitation['chaosValue'],
+                exaltedValue: invitation['exaltedValue'],
+                listingCount: invitation['listingCount'],
+              ));
+            });
+
+            ninjaInvitationsLastUpdated = DateTime.now();
+            return true;
+          }
+        case 'Scarab':
+          {
+            ninjaScarabs = [];
+
+            data['lines'].forEach((scarab) {
+              ninjaScarabs.add(GenericFlavourItem(
+                name: scarab['name'],
+                flavourText: scarab['flavourText'],
+                chaosValue: scarab['chaosValue'],
+                exaltedValue: scarab['exaltedValue'],
+                listingCount: scarab['listingCount'],
+              ));
+            });
+
+            ninjaScarabsLastUpdated = DateTime.now();
+            return true;
+          }
         default:
           return false;
       }
@@ -297,7 +457,9 @@ bool cacheExpired(itemType) {
       }
       return false;
     case 'UniqueAccessory':
-      if (DateTime.now().difference(ninjaUniqueAccessoriesLastUpdated).inMinutes >
+      if (DateTime.now()
+              .difference(ninjaUniqueAccessoriesLastUpdated)
+              .inMinutes >
           60) {
         return true;
       }
@@ -311,6 +473,59 @@ bool cacheExpired(itemType) {
     case 'UniqueJewel':
       if (DateTime.now().difference(ninjaUniqueJewelsLastUpdated).inMinutes >
           60) {
+        return true;
+      }
+      return false;
+    case 'SkillGem':
+      if (DateTime.now().difference(ninjaSkillGemsLastUpdated).inMinutes > 60) {
+        return true;
+      }
+      return false;
+    case 'ClusterJewel':
+      if (DateTime.now().difference(ninjaClusterJewelsLastUpdated).inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'Map':
+      if (DateTime.now().difference(ninjaMapsLastUpdated).inMinutes > 60) {
+        return true;
+      }
+      return false;
+    case 'BlightedMap':
+      if (DateTime.now().difference(ninjaBlightedMapsLastUpdated).inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'BlightRavagedMap':
+      if (DateTime.now()
+              .difference(ninjaBlightRavagedMapsLastUpdated)
+              .inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'UniqueMap':
+      if (DateTime.now().difference(ninjaUniqueMapsLastUpdated).inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'DeliriumOrb':
+      if (DateTime.now().difference(ninjaDeliriumOrbsLastUpdated).inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'Invitation':
+      if (DateTime.now().difference(ninjaInvitationsLastUpdated).inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'Scarab':
+      if (DateTime.now().difference(ninjaScarabsLastUpdated).inMinutes > 60) {
         return true;
       }
       return false;

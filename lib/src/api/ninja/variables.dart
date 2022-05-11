@@ -52,3 +52,39 @@ List<UniqueItem> ninjaUniqueFlasks = [];
 /// List of all unique jewels, and the time that we last fetched them
 DateTime ninjaUniqueJewelsLastUpdated = DateTime(1970);
 List<UniqueItem> ninjaUniqueJewels = [];
+
+/// List of all skill gems, and the time that we last fetched them
+DateTime ninjaSkillGemsLastUpdated = DateTime(1970);
+List<SkillGem> ninjaSkillGems = [];
+
+/// List of all cluster jewels, and the time that we last fetched them
+DateTime ninjaClusterJewelsLastUpdated = DateTime(1970);
+List<ClusterJewel> ninjaClusterJewels = [];
+
+/// List of all maps, and the time that we last fetched them
+DateTime ninjaMapsLastUpdated = DateTime(1970);
+List<MapItem> ninjaMaps = [];
+
+/// List of all blighted maps, and the time that we last fetched them
+DateTime ninjaBlightedMapsLastUpdated = DateTime(1970);
+List<MapItem> ninjaBlightedMaps = [];
+
+/// List of all blight-ravaged maps, and the time that we last fetched them
+DateTime ninjaBlightRavagedMapsLastUpdated = DateTime(1970);
+List<MapItem> ninjaBlightRavagedMaps = [];
+
+/// List of all unique maps, and the time that we last fetched them
+DateTime ninjaUniqueMapsLastUpdated = DateTime(1970);
+List<UniqueMapItem> ninjaUniqueMaps = [];
+
+/// List of all delirium orbs, and the time that we last fetched them
+DateTime ninjaDeliriumOrbsLastUpdated = DateTime(1970);
+List<GenericItem> ninjaDeliriumOrbs = [];
+
+/// List of all invitations, and the time that we last fetched them
+DateTime ninjaInvitationsLastUpdated = DateTime(1970);
+List<GenericFlavourItem> ninjaInvitations = [];
+
+/// List of all scarabs, and the time that we last fetched them
+DateTime ninjaScarabsLastUpdated = DateTime(1970);
+List<GenericFlavourItem> ninjaScarabs = [];
