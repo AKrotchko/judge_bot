@@ -76,3 +76,7 @@ List<MapItem> ninjaBlightRavagedMaps = [];
 /// List of all unique maps, and the time that we last fetched them
 DateTime ninjaUniqueMapsLastUpdated = DateTime(1970);
 List<UniqueMapItem> ninjaUniqueMaps = [];
+
+/// List of all delirium orbs, and the time that we last fetched them
+DateTime ninjaDeliriumOrbsLastUpdated = DateTime(1970);
+List<GenericItem> ninjaDeliriumOrbs = [];

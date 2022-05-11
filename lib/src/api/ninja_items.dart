@@ -348,6 +348,22 @@ Future<bool> fetchNinjaItems(String itemType) async {
             ninjaUniqueMapsLastUpdated = DateTime.now();
             return true;
           }
+        case 'DeliriumOrb':
+          {
+            ninjaDeliriumOrbs = [];
+
+            data['lines'].forEach((deliriumOrb) {
+              ninjaDeliriumOrbs.add(GenericItem(
+                name: deliriumOrb['name'],
+                chaosValue: deliriumOrb['chaosValue'],
+                exaltedValue: deliriumOrb['exaltedValue'],
+                listingCount: deliriumOrb['listingCount'],
+              ));
+            });
+
+            ninjaDeliriumOrbsLastUpdated = DateTime.now();
+            return true;
+          }
         default:
           return false;
       }
@@ -458,6 +474,12 @@ bool cacheExpired(itemType) {
       return false;
     case 'UniqueMap':
       if (DateTime.now().difference(ninjaUniqueMapsLastUpdated).inMinutes >
+          60) {
+        return true;
+      }
+      return false;
+    case 'DeliriumOrb':
+      if (DateTime.now().difference(ninjaDeliriumOrbsLastUpdated).inMinutes >
           60) {
         return true;
       }

@@ -579,6 +579,30 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                 });
                 break;
               }
+            case 'DeliriumOrb':
+              {
+                GenericItem deliriumOrb = ninjaDeliriumOrbs.firstWhere(
+                    (element) =>
+                        element.name == ninjaItems[matches.bestMatchIndex].name,
+                    orElse: () => GenericItem(
+                        name: 'Unknown',
+                        chaosValue: 0,
+                        exaltedValue: 0,
+                        listingCount: 0));
+
+                embed.addField(
+                    name: 'Total Listed:',
+                    content: '${deliriumOrb.listingCount}');
+                embed.addField(
+                    name: 'Chaos Value:',
+                    content: '${deliriumOrb.chaosValue}',
+                    inline: true);
+                embed.addField(
+                    name: 'Exalted Value:',
+                    content: '${deliriumOrb.exaltedValue}',
+                    inline: true);
+                break;
+              }
           }
         } else {
           embed.replaceField(
