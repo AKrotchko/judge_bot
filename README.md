@@ -18,13 +18,13 @@ Contact Andy#1590 on Discord if you would like to use my hosted bot. You're welc
 ### poe.ninja API
  - Price Check (Partially working, WIP)
 
-#### Current Progress: (13/30 - 43.3% complete)
-General: (6/7 - 85.7%)
+#### Current Progress: (13/28 - 46.4% complete)
+General: (7/7 - 100%)
  - [x] Currency
  - [x] Fragment
  - [x] Divination Cards
  - [x] Artifacts
- - [ ] Prophecies (RIP lol)
+ - ~~Prophecies~~ (RIP lol)
  - [x] Oils
  - [x] Incubators
 
@@ -37,11 +37,11 @@ Equipment & Gems: (7/7 - 100%)
  - [x] Skill Gems
  - [x] Cluster Jewels
 
-Atlas: (0/9 - 0%)
+Atlas: (0/8 - 0%)
  - [ ] Maps
  - [ ] Blighted Maps
  - [ ] Blight-ravaged Maps
- - [ ] Scourged Maps
+ - ~~Scourged Maps~~
  - [ ] Unique Maps
  - [ ] Delirium Orbs
  - [ ] Invitations
