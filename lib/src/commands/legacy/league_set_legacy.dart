@@ -14,10 +14,10 @@ Future<void> leagueSetCommand(ICommandContext ctx, String content) async {
       //     .getArg('league')
       //     .value
       //     .toString();
-      String league = content.replaceFirst('\$league ', '');
+      String leagueName = content.replaceFirst('\$league ', '');
 
       var url = Uri.parse(
-          'https://poe.ninja/api/data/economysearch?league=$league&languages=en');
+          'https://poe.ninja/api/data/economysearch?league=$leagueName&languages=en');
 
       var response = await http.get(url);
       print('Processing data from poe.ninja...');
@@ -36,10 +36,11 @@ Future<void> leagueSetCommand(ICommandContext ctx, String content) async {
       });
 
       print('Data from poe.ninja processed!');
+      league = leagueName;
 
-      ctx.reply(ComponentMessageBuilder()..content = 'Updated league to $league');
+      ctx.reply(ComponentMessageBuilder()..content = 'Updated league to $leagueName');
     } catch (e) {
-      ctx.reply(ComponentMessageBuilder()..content = 'Error setting league to $league:\n $e');
+      ctx.reply(ComponentMessageBuilder()..content = 'Error setting league to $leagueName:\n $e');
     }
   } else {
     ctx.reply(ComponentMessageBuilder()..content = 'You\'re not Andy.');
