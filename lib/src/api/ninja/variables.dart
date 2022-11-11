@@ -4,7 +4,6 @@ import 'package:judge_bot/src/api/ninja/objects.dart';
 
 // ToDo - Allow bot to get current league dynamically, and maybe even swap leagues?
 String league = 'Kalandra';
-// String league = 'Sentinel';
 
 /// Cached list of every item recognized by poe.ninja. Used for searching, and
 /// cross-referencing the poe.ninja API
