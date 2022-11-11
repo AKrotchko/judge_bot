@@ -58,11 +58,12 @@ void main(List<String> arguments) async {
 
   ICommander.create(botInstance, jb.prefixHandler)
 
-    /// Old style commands
+    /// Old style commands (This shit doesn't work right now, fuck you Discord)
     ..registerCommand('calc', jb.mathCommand)
     ..registerCommand('info', jb.infoCommand)
     ..registerCommand('league', jb.leagueSetCommand);
 
+  /// New style slash commands
   IInteractions.create(WebsocketInteractionBackend(botInstance))
     ..registerSlashCommand(SlashCommandBuilder('ping', 'Shows bots latency', [])
       ..registerHandler(jb.pingSlashHandler))
@@ -73,6 +74,13 @@ void main(List<String> arguments) async {
           required: true),
     ])
           ..registerHandler(jb.priceCheckSlashHandler))
+    ..registerSlashCommand(
+        SlashCommandBuilder('league', 'Set the league name for price checks', [
+      CommandOptionBuilder(
+          CommandOptionType.string, 'name', 'Name of the league',
+          required: true),
+    ])
+          ..registerHandler(jb.leagueSlashHandler))
     ..syncOnReady(
         syncRule: ManualCommandSync(sync: jb.getSyncCommandsOrOverride(true)));
   // ..events.onSlashCommand.listen((event) => jb.slashCommandsTotalUsageMetric.labels([event.interaction.name]).inc());
