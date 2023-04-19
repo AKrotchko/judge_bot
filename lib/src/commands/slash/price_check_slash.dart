@@ -78,6 +78,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                         flavourText: '',
                         chaosValue: 0,
                         exaltedValue: 0,
+                        divineValue: 0,
                         listingCount: 0));
 
                 embed = EmbedBuilder()
@@ -105,8 +106,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                       content: '${divCard.chaosValue}',
                       inline: true)
                   ..addField(
-                      name: 'Exalted Value:',
-                      content: '${divCard.exaltedValue}',
+                      name: 'Divine Value:',
+                      content: '${divCard.divineValue}',
                       inline: true)
                   ..addField(
                       name: 'Total Listed:',
@@ -123,6 +124,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                         name: 'Unknown',
                         chaosValue: 0,
                         exaltedValue: 0,
+                        divineValue: 0,
                         listingCount: 0));
 
                 embed.addField(
@@ -132,8 +134,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${artifact.chaosValue}',
                     inline: true);
                 embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${artifact.exaltedValue}',
+                    name: 'Divine Value:',
+                    content: '${artifact.divineValue}',
                     inline: true);
                 break;
               }
@@ -146,6 +148,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                         name: 'Unknown',
                         chaosValue: 0,
                         exaltedValue: 0,
+                        divineValue: 0,
                         listingCount: 0));
 
                 embed.addField(
@@ -155,8 +158,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${oil.chaosValue}',
                     inline: true);
                 embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${oil.exaltedValue}',
+                    name: 'Divine Value:',
+                    content: '${oil.divineValue}',
                     inline: true);
                 break;
               }
@@ -169,6 +172,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                         name: 'Unknown',
                         chaosValue: 0,
                         exaltedValue: 0,
+                        divineValue: 0,
                         listingCount: 0));
 
                 embed.addField(
@@ -179,8 +183,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${incubator.chaosValue}',
                     inline: true);
                 embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${incubator.exaltedValue}',
+                    name: 'Divine Value:',
+                    content: '${incubator.divineValue}',
                     inline: true);
                 break;
               }
@@ -193,6 +197,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                           name: 'Unknown',
                           chaosValue: 0,
                           exaltedValue: 0,
+                          divineValue: 0,
                           listingCount: 0,
                           itemType: 'Unknown',
                           baseType: 'Unknown',
@@ -213,8 +218,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${uniqueWeapon.chaosValue}',
                     inline: true);
                 embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${uniqueWeapon.exaltedValue}',
+                    name: 'Divine Value:',
+                    content: '${uniqueWeapon.divineValue}',
                     inline: true);
                 break;
               }
@@ -227,6 +232,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                           name: 'Unknown',
                           chaosValue: 0,
                           exaltedValue: 0,
+                          divineValue: 0,
                           listingCount: 0,
                           itemType: 'Unknown',
                           baseType: 'Unknown',
@@ -247,8 +253,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${uniqueArmour.chaosValue}',
                     inline: true);
                 embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${uniqueArmour.exaltedValue}',
+                    name: 'Divine Value:',
+                    content: '${uniqueArmour.divineValue}',
                     inline: true);
                 break;
               }
@@ -261,6 +267,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                           name: 'Unknown',
                           chaosValue: 0,
                           exaltedValue: 0,
+                          divineValue: 0,
                           listingCount: 0,
                           itemType: 'Unknown',
                           baseType: 'Unknown',
@@ -282,8 +289,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${uniqueAccessory.chaosValue}',
                     inline: true);
                 embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${uniqueAccessory.exaltedValue}',
+                    name: 'Divine Value:',
+                    content: '${uniqueAccessory.divineValue}',
                     inline: true);
                 break;
               }
@@ -296,6 +303,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                           name: 'Unknown',
                           chaosValue: 0,
                           exaltedValue: 0,
+                          divineValue: 0,
                           listingCount: 0,
                           itemType: 'Unknown',
                           baseType: 'Unknown',
@@ -316,8 +324,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${uniqueFlask.chaosValue}',
                     inline: true);
                 embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${uniqueFlask.exaltedValue}',
+                    name: 'Divine Value:',
+                    content: '${uniqueFlask.divineValue}',
                     inline: true);
                 break;
               }
@@ -330,6 +338,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                           name: 'Unknown',
                           chaosValue: 0,
                           exaltedValue: 0,
+                          divineValue: 0,
                           listingCount: 0,
                           itemType: 'Unknown',
                           baseType: 'Unknown',
@@ -350,8 +359,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${uniqueJewel.chaosValue}',
                     inline: true);
                 embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${uniqueJewel.exaltedValue}',
+                    name: 'Divine Value:',
+                    content: '${uniqueJewel.divineValue}',
                     inline: true);
                 break;
               }
@@ -366,6 +375,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                           levelRequired: 0,
                           chaosValue: 0,
                           exaltedValue: 0,
+                          divineValue: 0,
                           gemLevel: 0,
                           gemQuality: 0,
                           listingCount: 0,
@@ -397,8 +407,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                   inline: true,
                 );
                 embed.addField(
-                  name: 'Exalted Value:',
-                  content: '${skillGem.exaltedValue}',
+                  name: 'Divine Value:',
+                  content: '${skillGem.divineValue}',
                   inline: true,
                 );
                 break;
@@ -414,6 +424,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                           levelRequired: 0,
                           chaosValue: 0,
                           exaltedValue: 0,
+                          divineValue: 0,
                           listingCount: 0,
                           baseType: 'Unknown',
                           variant: 'Unknown',
@@ -441,8 +452,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                   inline: true,
                 );
                 embed.addField(
-                  name: 'Exalted Value:',
-                  content: '${clusterJewel.exaltedValue}',
+                  name: 'Divine Value:',
+                  content: '${clusterJewel.divineValue}',
                   inline: true,
                 );
                 break;
@@ -457,6 +468,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                         mapTier: 0,
                         chaosValue: 0,
                         exaltedValue: 0,
+                        divineValue: 0,
                         listingCount: 0));
 
                 embed.addField(
@@ -471,8 +483,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${map.chaosValue}',
                     inline: true);
                 embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${map.exaltedValue}',
+                    name: 'Divine Value:',
+                    content: '${map.divineValue}',
                     inline: true);
                 break;
               }
@@ -486,6 +498,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                         mapTier: 0,
                         chaosValue: 0,
                         exaltedValue: 0,
+                        divineValue: 0,
                         listingCount: 0));
 
                 embed.addField(
@@ -501,8 +514,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${blightedMap.chaosValue}',
                     inline: true);
                 embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${blightedMap.exaltedValue}',
+                    name: 'Divine Value:',
+                    content: '${blightedMap.divineValue}',
                     inline: true);
                 break;
               }
@@ -516,6 +529,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                         mapTier: 0,
                         chaosValue: 0,
                         exaltedValue: 0,
+                        divineValue: 0,
                         listingCount: 0));
 
                 embed.addField(
@@ -531,8 +545,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${blightedMap.chaosValue}',
                     inline: true);
                 embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${blightedMap.exaltedValue}',
+                    name: 'Divine Value:',
+                    content: '${blightedMap.divineValue}',
                     inline: true);
                 break;
               }
@@ -548,6 +562,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                         flavourText: 'Unknown',
                         chaosValue: 0,
                         exaltedValue: 0,
+                        divineValue: 0,
                         listingCount: 0));
 
                 embed.title = uniqueMap.name;
@@ -569,8 +584,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                   inline: true,
                 );
                 embed.addField(
-                  name: 'Exalted Value:',
-                  content: '${uniqueMap.exaltedValue}',
+                  name: 'Divine Value:',
+                  content: '${uniqueMap.divineValue}',
                   inline: true,
                 );
 
@@ -588,6 +603,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                         name: 'Unknown',
                         chaosValue: 0,
                         exaltedValue: 0,
+                        divineValue: 0,
                         listingCount: 0));
 
                 embed.addField(
@@ -598,8 +614,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${deliriumOrb.chaosValue}',
                     inline: true);
                 embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${deliriumOrb.exaltedValue}',
+                    name: 'Divine Value:',
+                    content: '${deliriumOrb.divineValue}',
                     inline: true);
                 break;
               }
@@ -613,6 +629,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                         flavourText: 'Unknown',
                         chaosValue: 0,
                         exaltedValue: 0,
+                        divineValue: 0,
                         listingCount: 0));
 
                 embed.title = invitation.name;
@@ -624,8 +641,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${invitation.chaosValue}',
                     inline: true);
                 embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${invitation.exaltedValue}',
+                    name: 'Divine Value:',
+                    content: '${invitation.divineValue}',
                     inline: true);
 
                 embed.addFooter((footer) {
@@ -643,6 +660,7 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                         flavourText: 'Unknown',
                         chaosValue: 0,
                         exaltedValue: 0,
+                        divineValue: 0,
                         listingCount: 0));
 
                 embed.title = scarab.name;
@@ -654,8 +672,8 @@ Future<void> priceCheckSlashHandler(ISlashCommandInteractionEvent event) async {
                     content: '${scarab.chaosValue}',
                     inline: true);
                 embed.addField(
-                    name: 'Exalted Value:',
-                    content: '${scarab.exaltedValue}',
+                    name: 'Divine Value:',
+                    content: '${scarab.divineValue}',
                     inline: true);
 
                 embed.addFooter((footer) {

@@ -20,6 +20,7 @@ class DivCard {
   final String flavourText;
   final double? chaosValue;
   final double? exaltedValue;
+  final double? divineValue;
   final int? listingCount;
 
   DivCard(
@@ -29,6 +30,7 @@ class DivCard {
       required this.flavourText,
       required this.chaosValue,
       required this.exaltedValue,
+      required this.divineValue,
       required this.listingCount});
 }
 
@@ -36,12 +38,14 @@ class GenericItem {
   final String name;
   final double? chaosValue;
   final double? exaltedValue;
+  final double? divineValue;
   final int? listingCount;
 
   GenericItem(
       {required this.name,
       required this.chaosValue,
       required this.exaltedValue,
+      required this.divineValue,
       required this.listingCount});
 }
 
@@ -52,6 +56,7 @@ class UniqueItem {
   final String itemType;
   final double? chaosValue;
   final double? exaltedValue;
+  final double? divineValue;
   final int? listingCount;
 
   UniqueItem(
@@ -61,6 +66,7 @@ class UniqueItem {
       required this.itemType,
       required this.chaosValue,
       required this.exaltedValue,
+      required this.divineValue,
       required this.listingCount});
 }
 
@@ -72,6 +78,7 @@ class SkillGem {
   final int? gemQuality;
   final double? chaosValue;
   final double? exaltedValue;
+  final double? divineValue;
   final int? listingCount;
 
   SkillGem({
@@ -82,6 +89,7 @@ class SkillGem {
     required this.gemQuality,
     required this.chaosValue,
     required this.exaltedValue,
+    required this.divineValue,
     required this.listingCount,
   });
 }
@@ -94,6 +102,7 @@ class ClusterJewel {
   final String variant;
   final double? chaosValue;
   final double? exaltedValue;
+  final double? divineValue;
   final int? listingCount;
 
   ClusterJewel({
@@ -104,6 +113,7 @@ class ClusterJewel {
     required this.variant,
     required this.chaosValue,
     required this.exaltedValue,
+    required this.divineValue,
     required this.listingCount,
   });
 }
@@ -113,6 +123,7 @@ class MapItem {
   final int? mapTier;
   final double? chaosValue;
   final double? exaltedValue;
+  final double? divineValue;
   final int? listingCount;
 
   MapItem(
@@ -120,6 +131,7 @@ class MapItem {
       required this.mapTier,
       required this.chaosValue,
       required this.exaltedValue,
+      required this.divineValue,
       required this.listingCount});
 }
 
@@ -130,6 +142,7 @@ class UniqueMapItem {
   final String flavourText;
   final double? chaosValue;
   final double? exaltedValue;
+  final double? divineValue;
   final int? listingCount;
 
   UniqueMapItem(
@@ -139,6 +152,7 @@ class UniqueMapItem {
       required this.flavourText,
       required this.chaosValue,
       required this.exaltedValue,
+      required this.divineValue,
       required this.listingCount});
 }
 
@@ -147,6 +161,7 @@ class GenericFlavourItem {
   final String flavourText;
   final double? chaosValue;
   final double? exaltedValue;
+  final double? divineValue;
   final int? listingCount;
 
   GenericFlavourItem(
@@ -154,5 +169,6 @@ class GenericFlavourItem {
       required this.flavourText,
       required this.chaosValue,
       required this.exaltedValue,
+      required this.divineValue,
       required this.listingCount});
 }
