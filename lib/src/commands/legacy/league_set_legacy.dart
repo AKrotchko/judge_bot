@@ -7,15 +7,10 @@ import 'package:nyxx_commander/nyxx_commander.dart';
 import 'package:nyxx_interactions/nyxx_interactions.dart';
 
 Future<void> leagueSetCommand(ICommandContext ctx, String content) async {
-  String leagueName = content.replaceFirst('\$league ', '');
-
   if (ctx.author.id.id == 97837550491664384) {
-    try {
-      // String league = event
-      //     .getArg('league')
-      //     .value
-      //     .toString();
+    String leagueName = content.replaceFirst('\$league ', '');
 
+    try {
       var url = Uri.parse(
           'https://poe.ninja/api/data/economysearch?league=$leagueName&languages=en');
 

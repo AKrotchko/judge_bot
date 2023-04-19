@@ -96,6 +96,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                   exaltedValue:
                       double.tryParse(divCard['exaltedValue'].toString()) ??
                           0.0,
+                  divineValue: double.tryParse(divCard['divineValue'].toString()) ?? 0.0,
                   listingCount:
                       int.tryParse(divCard['listingCount'].toString()) ?? 0));
             });
@@ -112,6 +113,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                   name: artifact['name'],
                   chaosValue: artifact['chaosValue'],
                   exaltedValue: artifact['exaltedValue'],
+                  divineValue: artifact['divineValue'],
                   listingCount: artifact['listingCount']));
             });
 
@@ -122,12 +124,13 @@ Future<bool> fetchNinjaItems(String itemType) async {
           {
             ninjaOils = [];
 
-            data['lines'].forEach((artifact) {
+            data['lines'].forEach((oil) {
               ninjaOils.add(GenericItem(
-                  name: artifact['name'],
-                  chaosValue: artifact['chaosValue'],
-                  exaltedValue: artifact['exaltedValue'],
-                  listingCount: artifact['listingCount']));
+                  name: oil['name'],
+                  chaosValue: oil['chaosValue'],
+                  exaltedValue: oil['exaltedValue'],
+                  divineValue: oil['divineValue'],
+                  listingCount: oil['listingCount']));
             });
 
             ninjaOilsLastUpdated = DateTime.now();
@@ -137,12 +140,13 @@ Future<bool> fetchNinjaItems(String itemType) async {
           {
             ninjaIncubators = [];
 
-            data['lines'].forEach((artifact) {
+            data['lines'].forEach((incubator) {
               ninjaIncubators.add(GenericItem(
-                  name: artifact['name'],
-                  chaosValue: artifact['chaosValue'],
-                  exaltedValue: artifact['exaltedValue'],
-                  listingCount: artifact['listingCount']));
+                  name: incubator['name'],
+                  chaosValue: incubator['chaosValue'],
+                  exaltedValue: incubator['exaltedValue'],
+                  divineValue: incubator['divineValue'],
+                  listingCount: incubator['listingCount']));
             });
 
             ninjaIncubatorsLastUpdated = DateTime.now();
@@ -157,6 +161,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                   name: uniqueWeapon['name'],
                   chaosValue: uniqueWeapon['chaosValue'],
                   exaltedValue: uniqueWeapon['exaltedValue'],
+                  divineValue: uniqueWeapon['divineValue'],
                   listingCount: uniqueWeapon['listingCount'],
                   baseType: uniqueWeapon['baseType'],
                   flavourText: uniqueWeapon['flavourText'],
@@ -175,6 +180,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                   name: uniqueArmour['name'],
                   chaosValue: uniqueArmour['chaosValue'],
                   exaltedValue: uniqueArmour['exaltedValue'],
+                  divineValue: uniqueArmour['divineValue'],
                   listingCount: uniqueArmour['listingCount'],
                   baseType: uniqueArmour['baseType'],
                   flavourText: uniqueArmour['flavourText'],
@@ -193,6 +199,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                   name: uniqueAccessory['name'],
                   chaosValue: uniqueAccessory['chaosValue'],
                   exaltedValue: uniqueAccessory['exaltedValue'],
+                  divineValue: uniqueAccessory['divineValue'],
                   listingCount: uniqueAccessory['listingCount'],
                   baseType: uniqueAccessory['baseType'],
                   flavourText: uniqueAccessory['flavourText'],
@@ -211,6 +218,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                   name: uniqueFlask['name'],
                   chaosValue: uniqueFlask['chaosValue'],
                   exaltedValue: uniqueFlask['exaltedValue'],
+                  divineValue: uniqueFlask['divineValue'],
                   listingCount: uniqueFlask['listingCount'],
                   baseType: uniqueFlask['baseType'],
                   flavourText: uniqueFlask['flavourText'],
@@ -229,6 +237,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                   name: uniqueJewel['name'],
                   chaosValue: uniqueJewel['chaosValue'],
                   exaltedValue: uniqueJewel['exaltedValue'],
+                  divineValue: uniqueJewel['divineValue'],
                   listingCount: uniqueJewel['listingCount'],
                   baseType: uniqueJewel['baseType'],
                   flavourText: uniqueJewel['flavourText'],
@@ -251,6 +260,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                 gemQuality: skillGem['gemQuality'],
                 chaosValue: skillGem['chaosValue'],
                 exaltedValue: skillGem['exaltedValue'],
+                divineValue: skillGem['divineValue'],
                 listingCount: skillGem['listingCount'],
               ));
             });
@@ -271,6 +281,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                 variant: clusterJewel['variant'],
                 chaosValue: clusterJewel['chaosValue'],
                 exaltedValue: clusterJewel['exaltedValue'],
+                divineValue: clusterJewel['divineValue'],
                 listingCount: clusterJewel['listingCount'],
               ));
             });
@@ -289,6 +300,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                 listingCount: map['listingCount'],
                 chaosValue: map['chaosValue'],
                 exaltedValue: map['exaltedValue'],
+                divineValue: map['divineValue']
               ));
             });
 
@@ -306,6 +318,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                 listingCount: blightedMap['listingCount'],
                 chaosValue: blightedMap['chaosValue'],
                 exaltedValue: blightedMap['exaltedValue'],
+                divineValue: blightedMap['divineValue']
               ));
             });
 
@@ -323,6 +336,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                 listingCount: blightedMap['listingCount'],
                 chaosValue: blightedMap['chaosValue'],
                 exaltedValue: blightedMap['exaltedValue'],
+                divineValue: blightedMap['divineValue']
               ));
             });
 
@@ -341,6 +355,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                 flavourText: uniqueMap['flavourText'],
                 chaosValue: uniqueMap['chaosValue'],
                 exaltedValue: uniqueMap['exaltedValue'],
+                divineValue: uniqueMap['divineValue'],
                 listingCount: uniqueMap['listingCount'],
               ));
             });
@@ -357,6 +372,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                 name: deliriumOrb['name'],
                 chaosValue: deliriumOrb['chaosValue'],
                 exaltedValue: deliriumOrb['exaltedValue'],
+                divineValue: deliriumOrb['divineValue'],
                 listingCount: deliriumOrb['listingCount'],
               ));
             });
@@ -374,6 +390,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                 flavourText: invitation['flavourText'],
                 chaosValue: invitation['chaosValue'],
                 exaltedValue: invitation['exaltedValue'],
+                divineValue: invitation['divineValue'],
                 listingCount: invitation['listingCount'],
               ));
             });
@@ -391,6 +408,7 @@ Future<bool> fetchNinjaItems(String itemType) async {
                 flavourText: scarab['flavourText'],
                 chaosValue: scarab['chaosValue'],
                 exaltedValue: scarab['exaltedValue'],
+                divineValue: scarab['divineValue'],
                 listingCount: scarab['listingCount'],
               ));
             });
