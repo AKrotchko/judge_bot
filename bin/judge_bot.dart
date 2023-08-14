@@ -81,6 +81,9 @@ void main(List<String> arguments) async {
           required: true),
     ])
           ..registerHandler(jb.leagueSlashHandler))
+    ..registerSlashCommand(
+      SlashCommandBuilder('spin', 'Spin to choose a league starter', [])
+          ..registerHandler(jb.spinSlashHandler))
     ..syncOnReady(
         syncRule: ManualCommandSync(sync: jb.getSyncCommandsOrOverride(true)));
   // ..events.onSlashCommand.listen((event) => jb.slashCommandsTotalUsageMetric.labels([event.interaction.name]).inc());
