@@ -20,6 +20,7 @@ Future<void> spinSlashHandler(ISlashCommandInteractionEvent event) async {
     'Ice Shot Deadeye',
     'Impending Doom Occultist',
     'Lightning Arrow Deadeye',
+    'Lightning Conduit Elementalist',
     'Poison Blade Vortex Occultist',
     'Poison Blade Vortex Pathfinder',
     'Poison Summon Raging Spirits Necromancer',
