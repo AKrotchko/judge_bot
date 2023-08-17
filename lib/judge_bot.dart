@@ -12,6 +12,7 @@ export 'src/commands/legacy/league_set_legacy.dart';
 export 'src/commands/slash/info_slash.dart';
 export 'src/commands/slash/price_check_slash.dart';
 export 'src/commands/slash/league_set_slash.dart';
+export 'src/commands/slash/spin_slash.dart';
 
 /// Api data
 export 'src/api/ninja_items.dart';
